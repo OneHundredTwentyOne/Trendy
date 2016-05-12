@@ -40,7 +40,25 @@ block body
     .navbar-main
         +nav-pills-justified([{text:"HOME",href:"/"},{text:"BUY",href:"/Browse"},{text:"SELL",href:"/Sell"}, {text:"COMMUNITY",href:"#"}],0)
         hr
-       
+        .signup
+            +carousel("carousel",[
+                  {
+                      image: "/images/join.png",
+                      h1: "Join the Community",
+                      button: {caption: "Sign Up Today", url: "/register"}
+                  },
+                  {
+                      image: "/images/login.png",
+                      h1: "Already a member?",
+                      button: {caption: "Sign In", url: "/login"}
+                  },
+                  {
+                      image:"/images/explore.png",
+                      h1: "Explore fashion",
+                      button: {caption: "Browse Now", url: "/Browse"}
+                  }
+              ])
+            br
         p.home-page Write about us here
     footer.footer
         p.text-muted  Copyright &copy Trendy 2016
