@@ -107,6 +107,12 @@ h1{
     color: white;
 }
 
+/* Form styles */
+.well{
+    width:60%;
+    margin-left: auto;
+    margin-right: auto;
+}
 /* footer style */
 footer.footer{
     background-color: black;

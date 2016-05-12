@@ -41,6 +41,33 @@ block body
     .navbar-main
         +nav-pills-justified([{text: "HOME", href: "/"}, {text: "BUY", href: "/Browse"}, {text: "SELL", href: "/Sell"}, {text: "COMMUNITY", href: "#"}],0)
         hr
+        .title Login
+        br
+        .subtitle Please login to your account here
+        br
+        form.well(id='form-login', method='post')
+            .form-group
+                label Username
+                input.form-control(type='text', id='user-tf', name='user')
+            .form-group
+                label Password
+                input.form-control(type='password', id='pass-tf', name='pass')
+            .controls
+                button(type='button').btn.btn-default.button-rememember-me
+                    span.glyphicon.glyphicon-unchecked.button-rememember-me-glyph
+                    | &nbsp Remember Me
+                span &nbsp &nbsp
+                button(type='submit').btn.btn-primary.button-sign-in
+                    span.glyphicon.glyphicon-lock
+                    | Sign In
+            .clearfix
+            hr
+            .btm-links
+                #forgot-password
+                    a(href='#') Forgot Your Password?
+                #create-account
+                    a(href='/signup') Create An Account
+            .clearfix
 
         br
     footer.footer
