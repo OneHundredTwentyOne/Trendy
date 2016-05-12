@@ -1,0 +1,14 @@
+extends layout
+extends ../node_modules/jade-bootstrap/_bootstrap
+append styles
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+block body
+    .title
+        p Trendy
+    .navbar
+        +nav-tabs-justified([{text:"Home",href:"/"},{text:"Browse",href:"/browse"},{text:"Sell",href:"#"},{text:"Profile",href:"#"},{text:"Cart",href:"#"}],1)
+    .searchbar
+        +input-group("","Search")
+            +input-simple("text","txtname","...","Name")
+    .signup

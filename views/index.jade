@@ -1,0 +1,31 @@
+extends layout
+extends ../node_modules/jade-bootstrap/_bootstrap
+append styles
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+block body
+  .title
+     p Trendy
+  .navbar
+    +nav-tabs-justified([{text:"Home",href:"/"},{text:"Browse",href:"/browse"},{text:"Sell",href:"#"},{text:"Profile",href:"#"},{text:"Cart",href:"#"}],0)
+  .searchbar
+    +input-group("","Search")
+        +input-simple("text","txtname","...","Name")
+  .signup
+      +carousel("carousel",[
+          {
+              image: "/images/signUp1.png",
+              h1: "Setting the trend",
+              button: {caption: "Sign Up Today", url: "#"}
+          },
+          {
+              image: "/images/signUp2.jpg",
+              h1: "Already a member?",
+              button: {caption: "Sign In", url: "#"}
+          },
+          {
+              image:"/images/signUp3.jpg",
+              h1: "Explore fashion",
+              button: {caption: "Browse Now", url: "#"}
+          }
+      ])
