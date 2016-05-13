@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg').native;
-var database = "postgres://Trendy:test@depot:5432/trendyDatabase";
+var database = "postgres://SWEN303:test@depot:5432/SWEN303";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,6 +19,39 @@ router.get('/login', function(req, res) {
   res.render('login', { title: 'Login' });
 });
 
+router.post('/login', function (req,res,next) {
+    console.log("Trying to log in");
+    
+        var USERNAME = req.body.user;
+        var PASSWORD = req.body.pass;
+        console.log(USERNAME + " " + PASSWORD);
+        var client = new pg.Client(database);
+    		pg.connect(database,function(err,client,done){
+		      if(err) {
+    				return console.error('could not connect to postgres', err);
+  					}
+  					console.log('Connected to database');
+  					 var query = "SELECT * FROM Users WHERE username='%NAME%' AND password='%PASSWORD%';".replace("%NAME%", USERNAME).replace("%PASSWORD%", PASSWORD);
+  					  client.query(query, function(error, result){
+
+            console.log(result);
+            console.log(error);
+            if(error) {
+                console.error('Query failed');
+                console.error(error);
+                return;
+            }
+            else if (result.rowCount === 0){
+                res.send(false); 
+                return;
+            } else {
+                res.send(true); 
+                console.log("Query success");
+                return;
+            }
+        })
+    })
+});
 
 /*GET register page*/
 router.get('/register', function(req, res) {
