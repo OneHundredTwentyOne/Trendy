@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg').native;
-var database = "postgres://SWEN303:test@depot:5432/SWEN303";
+var database = "postgres://pangaaro:test@depot:5432/SWEN303";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -61,5 +61,10 @@ router.get('/register', function(req, res) {
 /*GET sell page*/
 router.get('/sell', function(req, res) {
   res.render('sell', { title: 'Sell' });
+});
+
+/*GET profile page*/
+router.get('/profile', function(req,res){
+	res.render('profile', {title: 'Profile'});
 });
 module.exports = router;

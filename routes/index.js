@@ -62,4 +62,9 @@ router.get('/register', function(req, res) {
 router.get('/sell', function(req, res) {
   res.render('sell', { title: 'Sell' });
 });
+
+/*GET profile page*/
+router.get('/profile', function(req,res){
+	res.render('profile', {title: 'Profile'});
+});
 module.exports = router;
