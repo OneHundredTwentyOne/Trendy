@@ -1,5 +1,6 @@
-body {
+html, body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 /*Titles*/
 
@@ -114,11 +115,21 @@ h1{
     margin-right: auto;
 }
 /* footer style */
-footer.footer{
+footer{
+	/*
     background-color: black;
     width: 100%;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;*/
+ 
+}
+footer.footer{
+	background-color: black;
+   position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
 }
 
 footer.footer > p {
