@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var pg = require('pg').native;
+var pg = require('pg');
 var database =  "postgres://mxoilrnicwhdji:OhBRE_r8LgodxHHZ_ROjGFukd4@ec2-54-163-248-14.compute-1.amazonaws.com:5432/d8dqj27651vg99";
 
 /* GET home page. */
@@ -94,6 +94,11 @@ router.get('/sell', function(req, res) {
 
 /*GET profile page*/
 router.get('/profile', function(req,res){
-	res.render('profile', {title: 'Profile'});
+    res.render('profile', {title: 'Profile'});
+});
+
+/*GET item page*/
+router.get('/item', function(req,res){
+    res.render('item', {title: 'Item'});
 });
 module.exports = router;
