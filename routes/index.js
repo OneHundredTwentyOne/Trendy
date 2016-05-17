@@ -58,6 +58,36 @@ router.get('/register', function(req, res) {
   res.render('register', { title: 'Register' });
 });
 
+router.post('/login', function (req,res,next) {
+    console.log("Trying to log in");
+    	  var NAME = req.body.name;
+        var USERNAME = req.body.user;
+        var PASSWORD = req.body.pass;
+        console.log(USERNAME + " " + PASSWORD);
+        var client = new pg.Client(database);
+    		pg.connect(database,function(err,client,done){
+		      if(err) {
+    				return console.error('could not connect to postgres', err);
+  					}
+  					console.log('Connected to database');
+  					 var query = "INSERT INTO User VALUES (USERNAME, NAME, PASSWORD)";
+  					  client.query(query, function(error, result){
+
+            console.log(result);
+            console.log(error);
+            if(error) {
+                console.error('Query failed');
+                console.error(error);
+                return;
+            }
+            else{
+                res.send(true); 
+                return;
+            } 
+        })
+    })
+});
+
 /*GET sell page*/
 router.get('/sell', function(req, res) {
   res.render('sell', { title: 'Sell' });
