@@ -57,10 +57,9 @@ router.post('/login', function (req,res,next) {
 router.get('/register', function(req, res) {
   res.render('register', { title: 'Register' });
 });
-
 router.post('/register', function (req,res,next) {
     console.log("Trying to log in");
-    	  var NAME = req.body.name;
+    	  var NAME = req.body.realname;
         var USERNAME = req.body.user;
         var PASSWORD = req.body.pass;
         console.log(USERNAME + " " + PASSWORD);
@@ -70,9 +69,8 @@ router.post('/register', function (req,res,next) {
     				return console.error('could not connect to postgres', err);
   					}
   					console.log('Connected to database');
-  					 //var query = "INSERT INTO Users (Username,RealName, Password) VALUES (Username='%USERNAME%' AND RealName = '%NAME%' AND Password='%PASSWORD%');".replace("%USERNAME%", USERNAME).replace("%NAME%", NAME).replace("%PASSWORD%", PASSWORD);
-  					 var query = "INSERT INTO Users (Username, RealName, Password) VALUES ('test','test','test');"
-  					  client.query(query, function(error, result){
+  					 var query = ("INSERT INTO Users (Username, RealName, Password) VALUES ($1, $2, $3)");
+  					  client.query(query,[USERNAME, NAME, PASSWORD], function(error, result){
 
             console.log(result);
             console.log(error);
