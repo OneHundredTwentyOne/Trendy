@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var pg = require('pg');
+var pg = require('pg').native;
 var database =  "postgres://mxoilrnicwhdji:OhBRE_r8LgodxHHZ_ROjGFukd4@ec2-54-163-248-14.compute-1.amazonaws.com:5432/d8dqj27651vg99";
+var userName = null;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 /*Navigate to browse page */
 router.get("/browse",function(req,res){
-  res.render('browse',{title: 'Browse'})
+  res.render('browse', { title: 'Browse', username: userName });
 });
 
 /*GET login page*/
@@ -24,6 +25,9 @@ router.post('/login', function (req,res,next) {
     
         var USERNAME = req.body.user;
         var PASSWORD = req.body.pass;
+        userName = req.body.user;
+        var fail = "Failed to login. Please try again.";
+        console.log(fail);
         console.log(USERNAME + " " + PASSWORD);
         var client = new pg.Client(database);
     		pg.connect(database,function(err,client,done){
@@ -33,19 +37,16 @@ router.post('/login', function (req,res,next) {
   					console.log('Connected to database');
   					 var query = "SELECT * FROM Users WHERE username='%NAME%' AND password='%PASSWORD%';".replace("%NAME%", USERNAME).replace("%PASSWORD%", PASSWORD);
   					  client.query(query, function(error, result){
-
-            console.log(result);
-            console.log(error);
             if(error) {
                 console.error('Query failed');
                 console.error(error);
                 return;
             }
             else if (result.rowCount === 0){
-                res.send(false); 
+                res.render('login', { title: 'Login', username: userName, failed: fail });
                 return;
             } else {
-                res.send(true); 
+            	 res.render('index', { title: 'Home', username: userName });
                 console.log("Query success");
                 return;
             }
@@ -89,16 +90,16 @@ router.post('/register', function (req,res,next) {
 
 /*GET sell page*/
 router.get('/sell', function(req, res) {
-  res.render('sell', { title: 'Sell' });
+  res.render('sell', { title: 'Sell', username: userName });
 });
 
 /*GET profile page*/
 router.get('/profile', function(req,res){
-    res.render('profile', {title: 'Profile'});
+    res.render('profile', { title: 'Profile', username: userName });
 });
 
 /*GET item page*/
 router.get('/item', function(req,res){
-    res.render('item', {title: 'Item'});
+   res.render('item', { title: 'Item', username: userName });
 });
 module.exports = router;

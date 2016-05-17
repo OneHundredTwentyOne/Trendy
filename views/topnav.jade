@@ -23,9 +23,10 @@
         .login
             button(type="button", onclick= "login()")
                 span.glyphicon.glyphicon-log-in
-                | &nbsp Login
+                | &nbsp #{username}
                 span &nbsp &nbsp &nbsp
             script.
                 function login() {
                     window.location.href = '/login'
                 }
+         #{failed}

@@ -11,6 +11,7 @@ block body
     .navbar-main
         +nav-pills-justified([{text: "HOME", href: "/"}, {text: "BUY", href: "/Browse"}, {text: "SELL", href: "/Sell"}, {text: "COMMUNITY", href: "#"}],0)
         hr
+        
         .title Login
         br
         .subtitle Please login to your account here
@@ -32,6 +33,7 @@ block body
                     | Sign In
             .clearfix
             hr
+            <span class="label label-danger">#{failed}</span>
             .btm-links
                 #forgot-password
                     a(href='#') Forgot Your Password?
