@@ -5,37 +5,7 @@ head
     title= title
 
 block body
-    .navbar-header
-        .searchbar
-            +input-group("","Search")
-                +input-simple("text","txtname","Search","Name")
-        span &nbsp
-        .cart
-            button(type="button", onclick= "cart")
-                span.glyphicon.glyphicon-usd
-                | &nbsp Cart
-            script.
-                function cart() {
-                    window.location.href = '/cart'
-                }
-        .register
-            button(type="button", onclick= "register()")
-                span.glyphicon.glyphicon-user
-                | &nbsp Register
-                span &nbsp &nbsp &nbsp
-            script.
-                function register() {
-                    window.location.href = '/register'
-                }
-        .login
-            button(type="button", onclick= "login()")
-                span.glyphicon.glyphicon-log-in
-                | &nbsp Login
-                span &nbsp &nbsp &nbsp
-            script.
-                function login() {
-                    window.location.href = '/login'
-                }
+    include topnav
     .container
     +img-responsive ("images/logo.png", "Logo")
     .navbar-main
