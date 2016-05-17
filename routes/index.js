@@ -70,7 +70,7 @@ router.post('/register', function (req,res,next) {
     				return console.error('could not connect to postgres', err);
   					}
   					console.log('Connected to database');
-  					 var query = "INSERT INTO Users VALUES (USERNAME, NAME, PASSWORD)";
+  					 var query = "INSERT INTO Users (Username,RealName, Password) VALUES (USERNAME, NAME, PASSWORD)";
   					  client.query(query, function(error, result){
 
             console.log(result);
