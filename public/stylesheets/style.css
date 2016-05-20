@@ -117,16 +117,36 @@ footer{
 }
 footer.footer{
 	background-color: black;
-  right: 0;
-  bottom: 0;
-  left: 0;
   text-align: center;
+  clear: both;
+  margin: 0;
 }
 
 footer.footer > p {
     padding: 10px;
     color: white;
 
+}
+
+fieldset {
+    border: thin solid #ccc; 
+    border-radius: 4px;
+    padding: 20px;
+    padding-left: 40px;
+    background: #fbfbfb;
+}
+legend {
+   color: #678;
+}
+.form-control {
+    width: 95%;
+}
+label small {
+    color: #678 !important;
+}
+span.req {
+    color:maroon;
+    font-size: 112%;
 }
 
 /* USER PROFILE PAGE */

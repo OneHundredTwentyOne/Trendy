@@ -9,34 +9,55 @@ block body
    .container
     +img-responsive ("images/logo.png", "Logo")
     .navbar-main
-        +nav-pills-justified([{text:"HOME",href:"/"},{text:"Browse",href:"/Browse"}, {text:"COMMUNITY",href:"#"}, {text:"ABOUT",href:"/about"}, {text:"CONTACT",href:"/contact"}],0)
+        +nav-pills-justified([{text:"HOME",href:"/"},{text:"BROWSE",href:"/Browse"}, {text:"COMMUNITY",href:"#"}, {text:"ABOUT",href:"/about"}, {text:"CONTACT",href:"/contact"}],0)
         hr
-       .col-lg-6.col-sm-6
-          .card.hovercard
-            .card-background
-            .card-info
-              span.card-title #{username}
-          .btn-pref.btn-group.btn-group-justified.btn-group-lg(role='group', aria-label='...')
-            .btn-group(role='group')
-              button#buying.btn.btn-primary(type='button', href='#tab1', data-toggle='tab')
-                span.glyphicon.glyphicon-shopping-cart(aria-hidden='true')
-                .hidden-xs Buying
-            .btn-group(role='group')
-              button#selling.btn.btn-default(type='button', href='#tab2', data-toggle='tab')
-                span.glyphicon.glyphicon-usd(aria-hidden='true')
-                .hidden-xs Selling
-            .btn-group(role='group')
-              button#account.btn.btn-default(type='button', href='#tab3', data-toggle='tab')
-                span.glyphicon.glyphicon-user(aria-hidden='true')
-                .hidden-xs Account
-          .well
-            .tab-content
-              #tab1.tab-pane.fade.in.active
-                #{buy}
-              #tab2.tab-pane.fade.in
-                h3 Stuff you're selling
-              #tab3.tab-pane.fade.in
-                h3 Account Details
+       .container
+      .row
+        .col-sm-3.col-md-3
+          #accordion.panel-group
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                    span.glyphicon.glyphicon-user
+                    | &nbsp Account
+              #collapseOne.panel-collapse.collapse.in
+                .panel-body
+                  table.table
+                    tr
+                      td
+                        a(href='http://www.jquery2dotnet.com') Account Details
+                    tr
+                      td
+                        a(href='http://www.jquery2dotnet.com') My Orders
+                        span
+                    tr
+                      td
+                        a(href='http://www.jquery2dotnet.com') Track My Order
+                    tr
+                      td
+                        span.glyphicon.glyphicon-trash.text-danger
+                        a.text-danger(href='http://www.jquery2dotnet.com')
+                          | &nbsp Delete Account
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
+                    span.glyphicon.glyphicon-th
+                    | &nbsp Sell
+              #collapseTwo.panel-collapse.collapse
+                .panel-body
+                  table.table
+                    tr
+                      td
+                        a(href='http://www.jquery2dotnet.com') My Products
+                        span
+                    tr
+                      td
+                        a(href='http://www.jquery2dotnet.com') Manage Products
+                    tr
+                      td
+                        a(href='http://www.jquery2dotnet.com') Orders
 
 
     include footer
