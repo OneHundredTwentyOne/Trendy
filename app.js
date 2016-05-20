@@ -7,10 +7,10 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var login = require('./routes/index');
-var register = require('./routes/index');
-var browse = require('./routes/index');
-var sell = require('./routes/index');
+var login = require('./routes/login');
+var register = require('./routes/register');
+var browse = require('./routes/browse');
+var sell = require('./routes/sell');
 
 
 var app = express();
