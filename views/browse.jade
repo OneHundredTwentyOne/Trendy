@@ -20,13 +20,13 @@ block body
                     a.list-group-item(href='#') Accessories
                     a.list-group-item(href='#') Shoes
             .col-md-9
-                each item in items
+                for item in items
                     .row
                         .col-sm-4.col-lg-4.col-md-4
                             .thumbnail
                                 img(src='http://placehold.it/320x150', alt='')
                                 .caption
-                                    p #{item.price}
+                                    !{item.price}
                                 .ratings
                                     p.pull-right 15 reviews
                                     p
