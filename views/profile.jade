@@ -3,61 +3,64 @@ append styles
     link(rel='stylesheet', href='/stylesheets/style.css')
 head
     title= title
-    
+
 block body
-   include topnav
-   .container
-    +img-responsive ("images/logo.png", "Logo")
+    include topnav
+    .container
+        +img-responsive ("images/logo.png", "Logo")
     .navbar-main
-        +nav-pills-justified([{text:"HOME",href:"/"},{text:"BROWSE",href:"/Browse"}, {text:"COMMUNITY",href:"#"}, {text:"ABOUT",href:"/about"}, {text:"CONTACT",href:"/contact"}],0)
+        +nav-pills-justified([{text: "HOME", href: "/"}, {text: "BROWSE", href: "/Browse"}, {
+            text: "COMMUNITY",
+            href: "#"
+        }, {text: "ABOUT", href: "/about"}, {text: "CONTACT", href: "/contact"}],0)
         hr
-       .container
-      .row
-        .col-sm-3.col-md-3
-          #accordion.panel-group
-            .panel.panel-default
-              .panel-heading
-                h4.panel-title
-                  a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
-                    span.glyphicon.glyphicon-user
-                    | &nbsp Account
-              #collapseOne.panel-collapse.collapse.in
-                .panel-body
-                  table.table
-                    tr
-                      td
-                        a(href='http://www.jquery2dotnet.com') Account Details
-                    tr
-                      td
-                        a(href='http://www.jquery2dotnet.com') My Orders
-                        span
-                    tr
-                      td
-                        a(href='http://www.jquery2dotnet.com') Track My Order
-                    tr
-                      td
-                        span.glyphicon.glyphicon-trash.text-danger
-                        a.text-danger(href='http://www.jquery2dotnet.com')
-                          | &nbsp Delete Account
-            .panel.panel-default
-              .panel-heading
-                h4.panel-title
-                  a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
-                    span.glyphicon.glyphicon-th
-                    | &nbsp Sell
-              #collapseTwo.panel-collapse.collapse
-                .panel-body
-                  table.table
-                    tr
-                      td
-                        a(href='http://www.jquery2dotnet.com') My Products
-                        span
-                    tr
-                      td
-                        a(href='http://www.jquery2dotnet.com') Manage Products
-                    tr
-                      td
-                        a(href='http://www.jquery2dotnet.com') Orders
+        .container
+            .row
+                .col-sm-3.col-md-3
+                    #accordion.panel-group
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                                        span.glyphicon.glyphicon-user
+                                        | &nbsp Account
+                            #collapseOne.panel-collapse.collapse.in
+                                .panel-body
+                                    table.table
+                                        tr
+                                            td
+                                                a(href='http://www.jquery2dotnet.com') Account Details
+                                        tr
+                                            td
+                                                a(href='http://www.jquery2dotnet.com') My Orders
+                                                span
+                                        tr
+                                            td
+                                                a(href='http://www.jquery2dotnet.com') Track My Order
+                                        tr
+                                            td
+                                                span.glyphicon.glyphicon-trash.text-danger
+                                                a.text-danger(href='http://www.jquery2dotnet.com')
+                                                    | &nbsp Delete Account
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
+                                        span.glyphicon.glyphicon-th
+                                        | &nbsp Sell
+                            #collapseTwo.panel-collapse.collapse
+                                .panel-body
+                                    table.table
+                                        tr
+                                            td
+                                                a(href='http://www.jquery2dotnet.com') My Products
+                                                span
+                                        tr
+                                            td
+                                                a(href='http://www.jquery2dotnet.com') Manage Products
+                                        tr
+                                            td
+                                                a(href='http://www.jquery2dotnet.com') Orders
 
 
     include footer
