@@ -6,6 +6,38 @@ head
     
 block body
    include topnav
+   
+    .col-lg-6.col-sm-6
+      .card.hovercard
+        .card-background
+          img.card-bkimg(alt='', src='http://lorempixel.com/100/100/people/9/')
+          // http://lorempixel.com/850/280/people/9/
+        .useravatar
+          img(alt='', src='http://lorempixel.com/100/100/people/9/')
+        .card-info
+          span.card-title Pamela Anderson
+      .btn-pref.btn-group.btn-group-justified.btn-group-lg(role='group', aria-label='...')
+        .btn-group(role='group')
+          button#stars.btn.btn-primary(type='button', href='#tab1', data-toggle='tab')
+            span.glyphicon.glyphicon-star(aria-hidden='true')
+            .hidden-xs Stars
+        .btn-group(role='group')
+          button#favorites.btn.btn-default(type='button', href='#tab2', data-toggle='tab')
+            span.glyphicon.glyphicon-heart(aria-hidden='true')
+            .hidden-xs Favorites
+        .btn-group(role='group')
+          button#following.btn.btn-default(type='button', href='#tab3', data-toggle='tab')
+            span.glyphicon.glyphicon-user(aria-hidden='true')
+            .hidden-xs Following
+      .well
+        .tab-content
+          #tab1.tab-pane.fade.in.active
+            h3 This is tab 1
+          #tab2.tab-pane.fade.in
+            h3 This is tab 2
+          #tab3.tab-pane.fade.in
+            h3 This is tab 3
 
     footer.footer
         p.text-muted  Copyright &copy Trendy 2016
+

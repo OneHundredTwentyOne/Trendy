@@ -11,6 +11,7 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var browse = require('./routes/browse');
 var sell = require('./routes/sell');
+var profile = require('./routes/profile');
 
 
 var app = express();
