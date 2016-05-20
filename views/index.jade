@@ -11,60 +11,116 @@ block body
     .navbar-main
         +nav-pills-justified([{text:"HOME",href:"/"},{text:"BUY",href:"/Browse"},{text:"SELL",href:"/Sell"}, {text:"COMMUNITY",href:"#"}],0)
         hr
-        .signup
-            +carousel("carousel",[
-                  {
-                      image: "/images/join.png",
-                      h1: "Join the Community",
-                      button: {caption: "Sign Up Today", url: "/register"}
-                  },
-                  {
-                      image: "/images/login.png",
-                      h1: "Already a member?",
-                      button: {caption: "Sign In", url: "/login"}
-                  },
-                  {
-                      image:"/images/explore.png",
-                      h1: "Explore fashion",
-                      button: {caption: "Browse Now", url: "/Browse"}
-                  }
-              ])
-            br
-        .row.text-center
-            .col-md-3.col-sm-6.hero-feature
-                .thumbnail
-                    img(src='http://placehold.it/800x500', alt='')
-                    .caption
-                        h3 Feature Label
-                        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        p
-                            a.btn.btn-primary(href='#') Buy Now!
-                            a.btn.btn-default(href='#') More Info
-            .col-md-3.col-sm-6.hero-feature
-                .thumbnail
-                    img(src='http://placehold.it/800x500', alt='')
-                    .caption
-                        h3 Feature Label
-                        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        p
-                            a.btn.btn-primary(href='#') Buy Now!
-                            a.btn.btn-default(href='#') More Info
-            .col-md-3.col-sm-6.hero-feature
-                .thumbnail
-                    img(src='http://placehold.it/800x500', alt='')
-                    .caption
-                        h3 Feature Label
-                        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        p
-                            a.btn.btn-primary(href='#') Buy Now!
-                            a.btn.btn-default(href='#') More Info
-            .col-md-3.col-sm-6.hero-feature
-                .thumbnail
-                    img(src='http://placehold.it/800x500', alt='')
-                    .caption
-                        h3 Feature Label
-                        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        p
-                            a.btn.btn-primary(href='#') Buy Now!
-                            a.btn.btn-default(href='#') More Info
+        .container
+            .row
+                .col-xs-12.col-sm-12.col-md-3.col-lg-3
+                    .panel.panel-default
+                        .panel-heading
+                            h4 Shop by Product
+                        .panel-body
+                            ul#cat-navi.nav.nav-list
+                                li.active
+                                    a(href='#') Active category
+                                li
+                                    a(href='#') New in: Category
+                                li
+                                    a(href='#') New in: Category
+                                li
+                                    a(href='#') New in: Category
+                                li
+                                    a(href='#') New in: Category
+                                li
+                                    a(href='#') New in: Category
+                    .panel.panel-default.visible-lg
+                        .panel-heading
+                            h4 Most Popular
+                        .panel-body
+                            ul#cat-navi2.nav.nav-list
+                                li.active
+                                    a(href='#') Active category
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                                li
+                                    a(href='#') Category title
+                .col-md-9
+                    .row.carousel-holder
+                        .col-md-12
+                            +carousel("carousel",[
+                                {
+                                image: "/images/join.png",
+                                h1: "Join the Community",
+                                button: {caption: "Sign Up Today", url: "/register"}
+                                },
+                                {
+                                image: "/images/login.png",
+                                h1: "Already a member?",
+                                button: {caption: "Sign In", url: "/login"}
+                                },
+                                {
+                                image:"/images/explore.png",
+                                h1: "Explore fashion",
+                                button: {caption: "Browse Now", url: "/Browse"}
+                                }
+                                ])
+                            br
+                            p Featured Products
+                    .row
+                        .col-sm-4.col-lg-4.col-md-4
+                            .thumbnail
+                                img(src='http://placehold.it/320x150', alt='')
+                                .caption
+                                    h4.pull-right $24.99
+                                    h4
+                                        a(href='#') First Product
+                        .col-sm-4.col-lg-4.col-md-4
+                            .thumbnail
+                                img(src='http://placehold.it/320x150', alt='')
+                                .caption
+                                    h4.pull-right $64.99
+                                    h4
+                                        a(href='#') Second Product
+                        .col-sm-4.col-lg-4.col-md-4
+                            .thumbnail
+                                img(src='http://placehold.it/320x150', alt='')
+                                .caption
+                                    h4.pull-right $74.99
+                                    h4
+                                        a(href='#') Third Product
+                        .col-sm-4.col-lg-4.col-md-4
+                            .thumbnail
+                                img(src='http://placehold.it/320x150', alt='')
+                                .caption
+                                    h4.pull-right $84.99
+                                    h4
+                                        a(href='#') Fourth Product
+                        .col-sm-4.col-lg-4.col-md-4
+                            .thumbnail
+                                img(src='http://placehold.it/320x150', alt='')
+                                .caption
+                                    h4.pull-right $94.99
+                                    h4
+                                        a(href='#') Fifth Product
+                        .col-sm-4.col-lg-4.col-md-4
+                            .thumbnail
+                                img(src='http://placehold.it/320x150', alt='')
+                                .caption
+                                    h4.pull-right $94.99
+                                    h4
+                                        a(href='#') Sixth Product
     include footer
