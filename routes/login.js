@@ -5,6 +5,7 @@ var database =  "postgres://mxoilrnicwhdji:OhBRE_r8LgodxHHZ_ROjGFukd4@ec2-54-163
 var userName = null;
 
 
+
 /*GET login page*/
 router.get('/', function(req, res) {
   res.render('login', { title: 'Login' });
@@ -37,7 +38,7 @@ router.post('/', function (req,res,next) {
                 res.render('login', { title: 'Login', username: userName, failed: fail });
                 return;
             } else {
-            	 res.render('index', { title: 'Home', username: userName });
+            	 res.render('profile', { title:  'Profile', username: userName });
                 console.log("Query success");
                 return;
             }

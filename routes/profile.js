@@ -6,6 +6,21 @@ var userName = null;
 
 /*GET profile page*/
 router.get('/', function(req,res){
+    var client = new pg.Client(database);
+    pg.connect(database,function(err,client,done){
+        if(err) {
+            return console.error('could not connect to postgres', err);
+        }
+        console.log('Connected to database');
+        var query = "SELECT * FROM stock ORDER BY label";
+        client.query(query, function(error, result){
+            if(error) {
+                console.error('Query failed');
+                console.error(error);
+                return;
+            }
+        })
+    })
     res.render('profile', { title: 'Profile', username: userName });
 });
 
