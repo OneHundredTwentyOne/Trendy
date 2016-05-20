@@ -9,33 +9,32 @@ block body
     .container
     +img-responsive ("images/logo.png", "Logo")
     .navbar-main
-        +nav-pills-justified([{text:"HOME",href:"/"},{text:"BUY",href:"/Browse"},{text:"SELL",href:"/Sell"}, {text:"COMMUNITY",href:"#"}],0)
+        +nav-pills-justified([{text:"HOME",href:"/"},{text:"BUY",href:"/Browse"},{text:"SELL",href:"/Sell"}, {text:"COMMUNITY",href:"#"}],1)
         hr
     .container
         .row
             .col-md-3
-                p.lead Filter by Type
+                p.lead
                 .list-group
                     a.list-group-item(href='#') Clothing
                     a.list-group-item(href='#') Accessories
                     a.list-group-item(href='#') Shoes
             .col-md-9
-                .row
-                    .col-sm-4.col-lg-4.col-md-4
-                        .thumbnail
-                            img(src='http://placehold.it/320x150', alt='')
-                            .caption
-                                h4.pull-right #{items.price}
-                                h4
-                                    a(href='/item') #{items.label}
-                            .ratings
-                                p.pull-right 15 reviews
-                                p
-                                    span.glyphicon.glyphicon-star
-                                    span.glyphicon.glyphicon-star
-                                    span.glyphicon.glyphicon-star
-                                    span.glyphicon.glyphicon-star
-                                    span.glyphicon.glyphicon-star
+                each item in items
+                    .row
+                        .col-sm-4.col-lg-4.col-md-4
+                            .thumbnail
+                                img(src='http://placehold.it/320x150', alt='')
+                                .caption
+                                    p #{item.price}
+                                .ratings
+                                    p.pull-right 15 reviews
+                                    p
+                                        span.glyphicon.glyphicon-star
+                                        span.glyphicon.glyphicon-star
+                                        span.glyphicon.glyphicon-star
+                                        span.glyphicon.glyphicon-star
+                                        span.glyphicon.glyphicon-star
 
     footer.footer
         p.text-muted  Copyright &copy Trendy 2016
