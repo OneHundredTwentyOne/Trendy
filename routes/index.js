@@ -23,13 +23,14 @@ router.get("/browse",function(req,res) {
       for (var i = 0; i < result.rows.length; i++) {
         var item = {
           uid: result.rows[i].uid,
+          image: result.rows[i].image,
           label: result.rows[i].label,
           summary: result.rows[i].summary,
           price: result.rows[i].price
         };
         items.push(item);
       }
-      console.log(items);
+      console.log(items.image);
     res.render('browse', {title: 'Browse', items: items});
   })
   });

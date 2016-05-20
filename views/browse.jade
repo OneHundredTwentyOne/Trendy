@@ -24,9 +24,10 @@ block body
                     .row
                         .col-sm-4.col-lg-4.col-md-4
                             .thumbnail
-                                img(src='http://placehold.it/320x150', alt='')
+                                +img-responsive("images/!{item.image}", "Product")
                                 .caption
                                     !{item.price}
+                                    a(href ='/item') !{item.label}
                                 .ratings
                                     p.pull-right 15 reviews
                                     p
