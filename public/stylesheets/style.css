@@ -8,7 +8,9 @@ html, body {
     font-size:38px;
     margin-left: 20%;
 }
-
+.row.main{
+	width:160%;
+}
 .subtitle{
     margin-left: 20%;
 }

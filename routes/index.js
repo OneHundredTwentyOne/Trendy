@@ -9,7 +9,23 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 /* GET home page. */
 router.get('/', function(req, res, next) {
     username = localStorage.getItem("username");
-    res.render('index', { title: 'Trendy', username: username });
+     var items = [];
+  pg.connect(database, function (err, client, done) {
+    // Query items
+    var query = client.query("SELECT * FROM Stock", function (err, result) {
+      for (var i = 0; i < 6; i++) {
+        var item = {
+          uid: result.rows[i].uid,
+          image: result.rows[i].image,
+          label: result.rows[i].label,
+          summary: result.rows[i].summary,
+          price: result.rows[i].price
+        };
+        items.push(item);
+      }
+    res.render('index', {title: 'Home', items: items});
+  })
+});
 });
 
 module.exports = router;

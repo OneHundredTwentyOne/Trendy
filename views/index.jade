@@ -57,48 +57,16 @@ block body
                                 }
                                 ])
                             br
-                            p Featured Products
-                    .row
-                        .col-sm-4.col-lg-4.col-md-4
-                            .thumbnail
-                                img(src='http://placehold.it/320x150', alt='')
-                                .caption
-                                    h4.pull-right $24.99
-                                    h4
-                                        a(href='#') First Product
-                        .col-sm-4.col-lg-4.col-md-4
-                            .thumbnail
-                                img(src='http://placehold.it/320x150', alt='')
-                                .caption
-                                    h4.pull-right $64.99
-                                    h4
-                                        a(href='#') Second Product
-                        .col-sm-4.col-lg-4.col-md-4
-                            .thumbnail
-                                img(src='http://placehold.it/320x150', alt='')
-                                .caption
-                                    h4.pull-right $74.99
-                                    h4
-                                        a(href='#') Third Product
-                        .col-sm-4.col-lg-4.col-md-4
-                            .thumbnail
-                                img(src='http://placehold.it/320x150', alt='')
-                                .caption
-                                    h4.pull-right $84.99
-                                    h4
-                                        a(href='#') Fourth Product
-                        .col-sm-4.col-lg-4.col-md-4
-                            .thumbnail
-                                img(src='http://placehold.it/320x150', alt='')
-                                .caption
-                                    h4.pull-right $94.99
-                                    h4
-                                        a(href='#') Fifth Product
-                        .col-sm-4.col-lg-4.col-md-4
-                            .thumbnail
-                                img(src='http://placehold.it/320x150', alt='')
-                                .caption
-                                    h4.pull-right $94.99
-                                    h4
-                                        a(href='#') Sixth Product
+                            hr
+                            h2 &nbsp Featured Products
+                    .col-md-9
+                        .row.main
+                            for item in items
+                                .col-sm-4.col-lg-4.col-md-4
+                                    .thumbnail
+                                        img(id='search-results-image', src='images/#{item.image}.png', alt='Product')
+                                        .caption
+                                            h4.pull-right $#{item.price}
+                                            h4
+                                                a(href="item?itemid=#{item.uid}") #{item.label}
     include footer

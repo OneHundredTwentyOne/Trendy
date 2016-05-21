@@ -20,9 +20,9 @@ block body
                         .panel-body
                             ul#cat-navi.nav.nav-list
                                 li.active
-                                    a(href='#') Womens
+                                    a(href="/browse?typeid=women") Womens
                                 li
-                                    a(href='#') Mens
+                                    a(href="/browse?typeid=men") Mens
                     .panel.panel-default.visible-lg
                         .panel-heading
                             h4 Shop By Product
@@ -36,6 +36,7 @@ block body
                                     a(href="/browse?typeid=accessories") Accessories
                                 li
                                     a(href="/browse?typeid=swimwear") Swimwear
+                h2 &nbsp #{title}                    
                 .col-md-9
                     .row
                         for item in items
