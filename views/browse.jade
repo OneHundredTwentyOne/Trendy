@@ -29,9 +29,9 @@ block body
                         .panel-body
                             ul#cat-navi2.nav.nav-list
                                 li.active
-                                    a(href='#') Clothes
+                                    a(href="/browse?typeid=clothes") Clothes
                                 li
-                                    a(href='#') Shoes
+                                    a(href="/browse?typeid=shoes") Shoes
                                 li
                                     a(href='#') Accessories
                                 li
@@ -43,16 +43,8 @@ block body
                                 .thumbnail
                                     img(id='search-results-image', src='images/#{item.image}.png', alt='Product')
                                     .caption
-                                        h4.pull-right #{item.price}
+                                        h4.pull-right $#{item.price}
                                         h4
                                             a(href="item?itemid=#{item.uid}") #{item.label}
-                                    .ratings
-                                        p.pull-right 15 reviews
-                                        p
-                                            span.glyphicon.glyphicon-star
-                                            span.glyphicon.glyphicon-star
-                                            span.glyphicon.glyphicon-star
-                                            span.glyphicon.glyphicon-star
-                                            span.glyphicon.glyphicon-star
 
     include footer

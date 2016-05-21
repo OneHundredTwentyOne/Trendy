@@ -7,58 +7,78 @@ var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
 
 router.get('/', function(req, res) {
-    var search = req.query.search;
-    // If no search then display everything
-    if(search == undefined){
-        var items = [];
-        username = localStorage.getItem("username");
-        console.log("Browse username: " + username);
-        pg.connect(database, function (err, client, done) {
-            // Query items
-            var query = client.query("SELECT * FROM Stock", function (err, result) {
-                for (var i = 0; i < result.rows.length; i++) {
-                    var item = {
-                        uid: result.rows[i].uid,
-                        image: result.rows[i].image,
-                        label: result.rows[i].label,
-                        summary: result.rows[i].summary,
-                        price: result.rows[i].price
-                    };
-                    items.push(item);
-                    console.log(item.image);
-                }
-                res.render('browse', {title: 'Browse', items: items, username: username});
-            })
-        });
-    } else {
-        var items = [];
-        username = localStorage.getItem("username");
-        console.log("Browse username: " + username);
-        pg.connect(database, function(err, client, done){
-            // Query items
-            var query = client.query("SELECT * FROM Stock WHERE LOWER(label) LIKE LOWER('%"+search+"%')", function(err, result) {
-                // For each item
-                console.log(result);
-                for (i = 0; i < result.rows.length; i++) {
-                    // Add item
-                    var item = {
-                        uid: result.rows[i].uid,
-                        image: result.rows[i].image,
-                        label: result.rows[i].label,
-                        summary: result.rows[i].summary,
-                        price: result.rows[i].price
-                    };
-                    items.push(item);
-                }
-            });
+	var search = req.query.search;
+	// If no search then display everything
+	if(search == undefined){
+		var cat = req.query.typeid;
+		if(cat == undefined){
+		  var items = [];
+		  username = localStorage.getItem("username");
+  pg.connect(database, function (err, client, done) {
+    // Query items
+    var query = client.query("SELECT * FROM Stock", function (err, result) {
+      for (var i = 0; i < result.rows.length; i++) {
+        var item = {
+          uid: result.rows[i].uid,
+          image: result.rows[i].image,
+          label: result.rows[i].label,
+          summary: result.rows[i].summary,
+          price: result.rows[i].price
+        };
+        items.push(item);
+      }
+    res.render('browse', {title: 'Browse', items: items});
+  })
+  });}else{
+  	cat = "'" + req.query.typeid + "'";
+  	console.log("CAT: " + cat);
+  	pg.connect(database, function (err, client, done) {
+    // Query items
+    var category =[];
+    username = localStorage.getItem("username");
+    var query = client.query("SELECT * FROM Stock WHERE category =" +cat, function (err, result) {
+		for (var i = 0; i < result.rows.length; i++) {
+        var item = {
+          uid: result.rows[i].uid,
+          image: result.rows[i].image,
+          label: result.rows[i].label,
+          summary: result.rows[i].summary,
+          price: result.rows[i].price
+        };
+        category.push(item);
+        }
+    res.render('browse', {title: 'Browse', items: category});
+  })
+  });
+  }
+	} else {
+		var searchA = [];
+		username = localStorage.getItem("username");
+		pg.connect(database, function(err, client, done){
+			// Query items
+			var query = client.query("SELECT * FROM Stock WHERE LOWER(label) LIKE LOWER('%"+search+"%')", function(err, result) {
+				// For each item
+				console.log(result);
+				for (i = 0; i < result.rows.length; i++) {
+					// Add item
+					var item = {
+          uid: result.rows[i].uid,
+          image: result.rows[i].image,
+          label: result.rows[i].label,
+          summary: result.rows[i].summary,
+          price: result.rows[i].price
+        };
+					searchA.push(item);
+				}
+			});
 
-            query.on('end', function(){
-                var str = "- " + items.length + " Results from search '" + search + "'";
-                res.render('browse', {title: str, items: items, username: username});
-                done();
-            });
-        });
-    }
+			query.on('end', function(){
+				var str = "- " + searchA.length + " Results from search '" + search + "'";
+				res.render('browse', {title: str, items: searchA});
+				done();
+			});
+		});
+	}
 
 });
 

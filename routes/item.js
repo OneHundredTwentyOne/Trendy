@@ -9,7 +9,7 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 
 /*GET item page*/
 router.get("/",function(req,res) {
-  username = localStorage.getItem("username");
+	username = localStorage.getItem("username");
   var id = parseInt(req.query.itemid);
   console.log(id);
   pg.connect(database, function (err, client, done) {
