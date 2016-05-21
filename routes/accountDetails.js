@@ -23,10 +23,9 @@ router.get('/', function(req,res){
                 console.error(error);
                 return;
             }
-            buy = result;
         })
     })
-    res.render('accountDetails', { title: 'My Account', username: userName });
+    res.render('accountDetails', { title: 'My Account', username: username });
 });
 
 

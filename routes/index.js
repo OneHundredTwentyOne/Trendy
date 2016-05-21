@@ -8,7 +8,8 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Trendy' });
+    username = localStorage.getItem("username");
+    res.render('index', { title: 'Trendy', username: username });
 });
 
 module.exports = router;

@@ -7,8 +7,85 @@ head
 block body
     include topnav
     .container
-    +img-responsive ("images/logo.png", "Logo")
+        +img-responsive ("images/logo.png", "Logo")
     .navbar-main
-        +nav-pills-justified([{text:"HOME",href:"/"},{text:"BUY",href:"/Browse"},{text:"SELL",href:"/Sell"}, {text:"COMMUNITY",href:"#"}],0)
+        +nav-pills-justified([{text: "HOME", href: "/"}, {text: "BROWSE", href: "/Browse"}, {
+            text: "COMMUNITY",
+            href: "#"
+        }, {text: "ABOUT", href: "/about"}, {text: "CONTACT", href: "/contact"}],0)
         hr
+        .container.main
+            .row
+                .col-sm-3.col-md-3
+                    #accordion.panel-group
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                                        span.glyphicon.glyphicon-user
+                                        | &nbsp Account
+                            #collapseOne.panel-collapse.collapse.in
+                                .panel-body
+                                    table.table
+                                        tr
+                                            td
+                                                a(href="accountDetails") Account Details
+                                        tr
+                                            td
+                                                a(href='http://www.jquery2dotnet.com') My Orders
+                                                span
+                                        tr
+                                            td
+                                                span.glyphicon.glyphicon-trash.text-danger
+                                                a.text-danger(href='http://www.jquery2dotnet.com')
+                                                    | &nbsp Delete Account
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
+                                        span.glyphicon.glyphicon-th
+                                        | &nbsp Sell
+                            #collapseTwo.panel-collapse.collapse
+                                .panel-body
+                                    table.table
+                                        tr
+                                            td
+                                                a(href='myProducts') Sell A Product
+                                                span
+                                        tr
+                                            td
+                                                a(href='myProducts') My Products
+                                        tr
+                                            td
+                                                a(href='http://www.jquery2dotnet.com') Manage Products
+                .container
+                    form.well(id='form-login', method='post')
+                        .form-group
+                            label Label
+                            input.form-control(type='text', name='label')
+                        .form-group
+                            label Size
+                            input.form-control(type='text', name='size')
+                        .form-group
+                            label Price
+                            input.form-control(type='numeric', name='price')
+                        .form-group
+                            label Summary
+                            input.form-control(type='text', name = 'summary')
+                        .form-group
+                            label Description
+                            input.form-control(type = 'text', name = 'description')
+                        .form-group
+                            label Category
+                            input.form-control(type = 'text', name = 'category')
+                        .form-group
+                            label Condition
+                            input.form-control(type = 'text', name = 'condition')
+                        .controls
+                            button(type='submit').btn.btn-primary.button-sign-in
+                                span.glyphicon.glyphicon-check
+                                | &nbsp Submit
+                        .clearfix
 
+
+    include footer

@@ -10,9 +10,10 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 router.get('/', function(req, res) {
   res.render('register', { title: 'Register' });
 });
+
 router.post('/', function (req,res,next) {
     console.log("Trying to log in");
-    	  var NAME = req.body.realname;
+        var NAME = req.body.realname;
         var USERNAME = req.body.user;
         var PASSWORD = req.body.pass;
         console.log(USERNAME + " " + PASSWORD);
