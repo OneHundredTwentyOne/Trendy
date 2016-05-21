@@ -33,12 +33,12 @@ block body
                                 li
                                     a(href="/browse?typeid=shoes") Shoes
                                 li
-                                    a(href='#') Accessories
+                                    a(href="/browse?typeid=accessories") Accessories
                                 li
-                                    a(href='#') Swimwear
+                                    a(href="/browse?typeid=swimwear") Swimwear
                 .col-md-9
-                    for item in items
-                        .row
+                    .row
+                        for item in items
                             .col-sm-4.col-lg-4.col-md-4
                                 .thumbnail
                                     img(id='search-results-image', src='images/#{item.image}.png', alt='Product')
