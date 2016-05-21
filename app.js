@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var myProducts = require('./routes/myProducts');
+var accountDetails = require('./routes/accountDetails');
+var browse = require('./routes/browse');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var sell = require('./routes/sell');
@@ -30,11 +33,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/browse', browse);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/sell', sell);
 app.use('/profile', profile);
+app.use('/accountDetails', accountDetails);
+app.use('/myProducts', myProducts);
 app.use('/item', item);
 app.use('/cart',cart);
 

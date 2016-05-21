@@ -3,7 +3,8 @@ var router = express.Router();
 var pg = require('pg').native;
 var database =  "postgres://mxoilrnicwhdji:OhBRE_r8LgodxHHZ_ROjGFukd4@ec2-54-163-248-14.compute-1.amazonaws.com:5432/d8dqj27651vg99";
 var userName = null;
-
+var LocalStorage = require('node-localstorage').LocalStorage,
+    localStorage = new LocalStorage('./scratch')
 
 
 /*GET login page*/
@@ -39,6 +40,7 @@ router.post('/', function (req,res,next) {
                 return;
             } else {
             	 res.render('profile', { title:  'Profile', username: userName });
+                localStorage.setItem("username",userName);
                 console.log("Query success");
                 return;
             }

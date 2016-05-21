@@ -50,7 +50,7 @@ block body
                                     table.table
                                         tr
                                             td
-                                                a(href='myProducts') My Products
+                                                a(href='http://www.jquery2dotnet.com') My Products
                                                 span
                                         tr
                                             td
@@ -58,7 +58,22 @@ block body
                                         tr
                                             td
                                                 a(href='http://www.jquery2dotnet.com') Orders
-
-
-
+                .col-md-9
+                    for item in selling
+                        .row
+                            .col-sm-4.col-lg-4.col-md-4
+                                .thumbnail
+                                    img(id='search-results-image', src='images/#{item.image}.png', alt='Product')
+                                    .caption
+                                        h4.pull-right #{item.price}
+                                        h4
+                                            a(href="item?itemid=#{item.uid}") #{item.label}
+                                    .ratings
+                                        p.pull-right 15 reviews
+                                        p
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
     include footer
