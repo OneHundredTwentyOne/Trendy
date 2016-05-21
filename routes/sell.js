@@ -5,14 +5,22 @@ var database =  "postgres://mxoilrnicwhdji:OhBRE_r8LgodxHHZ_ROjGFukd4@ec2-54-163
 var username = null;
 var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
+var fileName = "";
+var multer = require('multer');
+var storage = multer.memoryStorage();
+var upload = multer({
+  storage: storage,
+  dest: './uploads'
+});
+router.use(upload.single('file'));
 
 /*GET sell page*/
 router.post('/', function(req, res) {
   username = localStorage.getItem("username");
+  var FILE = req.body.file;
   var LABEL = req.body.label;
   var SIZE = req.body.size;
   var PRICE = req.body.price;
-  var SUMMARY = req.body.summary;
   var DESCRIPTION = req.body.description;
   var SELLERNAME = username;
   var CATEGORY = req.body.category;
@@ -23,8 +31,8 @@ router.post('/', function(req, res) {
       return console.error('could not connect to postgres', err);
     }
     console.log('Connected to database');
-    var query = ("INSERT INTO Stock (label, size, price, summary, description, sellername, category, condition) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)");
-    client.query(query, [LABEL, SIZE, PRICE, SUMMARY, DESCRIPTION, SELLERNAME, CATEGORY, CONDITION], function (error, result) {
+    var query = ("INSERT INTO Stock (image, label, size, price, description, sellername, category, condition) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)");
+    client.query(query, [FILE, LABEL, SIZE, PRICE, SUMMARY, DESCRIPTION, SELLERNAME, CATEGORY, CONDITION], function (error, result) {
       console.log(result);
       console.log(error);
       if (error) {

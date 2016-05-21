@@ -70,9 +70,6 @@ block body
                             label Price
                             input.form-control(type='numeric', name='price')
                         .form-group
-                            label Summary
-                            input.form-control(type='text', name = 'summary')
-                        .form-group
                             label Description
                             input.form-control(type = 'text', name = 'description')
                         .form-group
@@ -81,6 +78,9 @@ block body
                         .form-group
                             label Condition
                             input.form-control(type = 'text', name = 'condition ')
+                        .form(name = "upload", action = "/upload", method = "post", enctype="multipart/form-data")
+                            input(type="file", name="file")
+                        br
                         .controls
                             button(type='submit').btn.btn-primary.button-sign-in
                                 span.glyphicon.glyphicon-check

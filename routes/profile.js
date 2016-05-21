@@ -6,7 +6,6 @@ var username = null;
 var buy = null;
 var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
-
 /*GET profile page*/
 router.get('/', function(req,res){
     var client = new pg.Client(database);
