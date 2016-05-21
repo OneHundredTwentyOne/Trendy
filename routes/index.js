@@ -3,12 +3,6 @@ var router = express.Router();
 var pg = require('pg').native;
 var database =  "postgres://mxoilrnicwhdji:OhBRE_r8LgodxHHZ_ROjGFukd4@ec2-54-163-248-14.compute-1.amazonaws.com:5432/d8dqj27651vg99";
 var userName = null;
-var test = {
-  uid: 420,
-  label: 'bleach',
-  summary: 'swag',
-  price: 499
-};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,7 +13,7 @@ router.get("/browse",function(req,res) {
   var items = [];
   pg.connect(database, function (err, client, done) {
     // Query items
-    var query = client.query("SELECT * FROM Stock", function (err, result) {
+    var query = client.query("SELECT * FROM Stock WHERE uid =7", function (err, result) {
       for (var i = 0; i < result.rows.length; i++) {
         var item = {
           uid: result.rows[i].uid,
@@ -29,8 +23,8 @@ router.get("/browse",function(req,res) {
           price: result.rows[i].price
         };
         items.push(item);
+        console.log(item.image);
       }
-      console.log(items.image);
     res.render('browse', {title: 'Browse', items: items});
   })
   });

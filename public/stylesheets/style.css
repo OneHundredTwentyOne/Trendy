@@ -17,6 +17,16 @@ html, body {
     right: 0px;
 }
 
+.container.main{
+	margin-left: 100px;
+}
+.col-md-9{
+	width: 75%;
+}
+
+.well.well-sm{
+	width: 500px;
+}
 /*Logo*/
 .img-responsive{
     margin-left: auto;
@@ -63,6 +73,9 @@ html, body {
     display: inline-block;
     float: right;
     margin-top: 13px;
+}
+.row{
+	width:120%
 }
 
 .cart{

@@ -11,69 +11,48 @@ block body
     .navbar-main
         +nav-pills-justified([{text:"HOME",href:"/"},{text:"BROWSE",href:"/Browse"}, {text:"COMMUNITY",href:"#"}, {text:"ABOUT",href:"/about"}, {text:"CONTACT",href:"/contact"}],1)
         hr
-    .container
+    .container.main
             .row
                 .col-xs-12.col-sm-12.col-md-3.col-lg-3
                     .panel.panel-default
                         .panel-heading
-                            h4 Shop by Product
+                            h4 Shop by Gender
                         .panel-body
                             ul#cat-navi.nav.nav-list
                                 li.active
-                                    a(href='#') Active category
+                                    a(href='#') Womens
                                 li
-                                    a(href='#') New in: Category
-                                li
-                                    a(href='#') New in: Category
-                                li
-                                    a(href='#') New in: Category
-                                li
-                                    a(href='#') New in: Category
-                                li
-                                    a(href='#') New in: Category
+                                    a(href='#') Mens
                     .panel.panel-default.visible-lg
                         .panel-heading
-                            h4 Most Popular
+                            h4 Shop By Product
                         .panel-body
                             ul#cat-navi2.nav.nav-list
                                 li.active
-                                    a(href='#') Active category
+                                    a(href='#') Clothes
                                 li
-                                    a(href='#') Category title
+                                    a(href='#') Shoes
                                 li
-                                    a(href='#') Category title
+                                    a(href='#') Accessories
                                 li
-                                    a(href='#') Category title
-                                li
-                                    a(href='#') Category title
-                                li
-                                    a(href='#') Category title
-                                li
-                                    a(href='#') Category title
-                                li
-                                    a(href='#') Category title
-                                li
-                                    a(href='#') Category title
-                                li
-                                    a(href='#') Category title
-                                li
-                                    a(href='#') Category title
+                                    a(href='#') Swimwear
                 .col-md-9
-                for item in items
-                    .row
-                        .col-sm-4.col-lg-4.col-md-4
-                            .thumbnail
-                                +img-responsive("images/!{item.image}", "Product")
-                                .caption
-                                    !{item.price}
-                                    a(href ='/item') !{item.label}
-                                .ratings
-                                    p.pull-right 15 reviews
-                                    p
-                                        span.glyphicon.glyphicon-star
-                                        span.glyphicon.glyphicon-star
-                                        span.glyphicon.glyphicon-star
-                                        span.glyphicon.glyphicon-star
-                                        span.glyphicon.glyphicon-star
+                    for item in items
+                        .row
+                            .col-sm-4.col-lg-4.col-md-4
+                                .thumbnail
+                                    img(id='search-results-image', src='images/#{item.image}.png', alt='Product')
+                                    .caption
+                                        h4.pull-right #{item.price}
+                                        h4
+                                            a(href='item') #{item.label}
+                                    .ratings
+                                        p.pull-right 15 reviews
+                                        p
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
 
     include footer
