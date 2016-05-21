@@ -10,22 +10,32 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 /*GET profile page*/
 router.get('/', function(req,res){
     var client = new pg.Client(database);
+    var users = [];
     username = localStorage.getItem("username");
     pg.connect(database,function(err,client,done){
         if(err) {
             return console.error('could not connect to postgres', err);
         }
         console.log('Connected to database');
-        var query = "SELECT * FROM stock";
+        var query = "SELECT * FROM USERS WHERE username = '%NAME%';".replace("%NAME%", username);
+        console.log("Username is: " + username);
         client.query(query, function(error, result){
             if(error) {
                 console.error('Query failed');
                 console.error(error);
                 return;
             }
+            for (var i = 0; i < result.rows.length; i++) {
+                var user = {
+                    username: result.rows[i].username,
+                    realname: result.rows[i].realname
+                };
+                users.push(user);
+            }
+            console.log(users);
+            res.render('accountDetails', { title: 'My Account', users: users, username: username });
         })
     })
-    res.render('accountDetails', { title: 'My Account', username: username });
 });
 
 

@@ -55,6 +55,10 @@ block body
                                         tr
                                             td
                                                 a(href='myProducts') My Products
+                .container
+                    for user in users
+                       p  #{user.username}
+                       p #{user.realname}
 
 
 
