@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg').native;
 var database =  "postgres://mxoilrnicwhdji:OhBRE_r8LgodxHHZ_ROjGFukd4@ec2-54-163-248-14.compute-1.amazonaws.com:5432/d8dqj27651vg99";
-var userName = null;
+var username = null;
 var LocalStorage = require('node-localstorage').LocalStorage,
-    localStorage = new LocalStorage('./scratch')
+    localStorage = new LocalStorage('./scratch');
 
 
 /*GET login page*/
@@ -18,7 +18,7 @@ router.post('/', function (req,res,next) {
     		
         var USERNAME = req.body.user;
         var PASSWORD = req.body.pass;
-        userName = req.body.user;
+        username = req.body.user;
         var fail = "Failed to login. Please try again.";
         console.log(fail);
         console.log(USERNAME + " " + PASSWORD);
@@ -36,11 +36,11 @@ router.post('/', function (req,res,next) {
                 return;
             }
             else if (result.rowCount === 0){
-                res.render('login', { title: 'Login', username: userName, failed: fail });
+                res.render('login', { title: 'Login', username: username, failed: fail });
                 return;
             } else {
-            	 res.render('profile', { title:  'Profile', username: userName });
-                localStorage.setItem("username",userName);
+                localStorage.setItem("username",username);
+            	 res.render('profile', { title:  'Profile', username: username });
                 console.log("Query success");
                 return;
             }
