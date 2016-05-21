@@ -7,9 +7,24 @@ var userName = null;
 
 
 /*GET item page*/
-router.get('/', function(req,res){
-   res.render('item', { title: 'Item', username: userName });
+router.get("/",function(req,res) {
+  var id = parseInt(req.query.itemid);
+  console.log(id);
+  pg.connect(database, function (err, client, done) {
+    // Query items
+    var query = client.query("SELECT * FROM Stock WHERE uid = " + id, function (err, result) {
+        var item = {
+          uid: result.rows[0].uid,
+          image: result.rows[0].image,
+          label: result.rows[0].label,
+          description: result.rows[0].description,
+          price: result.rows[0].price,
+        };
+    res.render('item', {title: 'Item', items: item});
+  })
+  });
 });
+
 
 
 module.exports = router;

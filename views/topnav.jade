@@ -1,8 +1,9 @@
 #topnav
 .navbar-header
         .searchbar
-            +input-group("","Search")
-                +input-simple("text","txtname","Search","Name")
+            form.nav.navbar-nav.middle(name='search-query', action='/browse', method='get')
+                    input(id='searchBox', "text", "query", "Search" value='Search', onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'Search';}", name='search')
+                    input(id='submitButton', type='submit', value='Search')
         .cart
             button(type="button", onclick= "cart")
                 span.glyphicon.glyphicon-usd
