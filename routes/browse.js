@@ -23,7 +23,9 @@ router.get('/', function(req, res) {
           image: result.rows[i].image,
           label: result.rows[i].label,
           summary: result.rows[i].summary,
-          price: result.rows[i].price
+          price: result.rows[i].price,
+          sellername: result.rows[i].sellername,
+          description: result.rows[i].description
         };
         items.push(item);
       }
@@ -44,7 +46,9 @@ router.get('/', function(req, res) {
           image: result.rows[i].image,
           label: result.rows[i].label,
           summary: result.rows[i].summary,
-          price: result.rows[i].price
+          price: result.rows[i].price,
+			 sellername: result.rows[i].sellername,
+			 description: result.rows[i].description
         };
         category.push(item);
         }
@@ -66,7 +70,9 @@ router.get('/', function(req, res) {
           image: result.rows[i].image,
           label: result.rows[i].label,
           summary: result.rows[i].summary,
-          price: result.rows[i].price
+          price: result.rows[i].price,
+          sellername: result.rows[i].sellername,
+          description: result.rows[i].description
         };
         gender.push(item);
         }
@@ -90,7 +96,9 @@ router.get('/', function(req, res) {
           image: result.rows[i].image,
           label: result.rows[i].label,
           summary: result.rows[i].summary,
-          price: result.rows[i].price
+          price: result.rows[i].price,
+          sellername: result.rows[i].sellername,
+			description: result.rows[i].description
         };
 					searchA.push(item);
 				}

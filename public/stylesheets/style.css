@@ -18,7 +18,9 @@ html, body {
     position: absolute;
     right: 0px;
 }
-
+p.seller{
+	font-style: italic;
+}
 .container.main{
 	margin-left: 100px;
 }
