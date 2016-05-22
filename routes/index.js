@@ -38,4 +38,10 @@ router.get('/about', function(req, res, next) {
     username = localStorage.getItem("username");
     res.render('about', {title: 'About Us'});
 });
+
+router.get('/delete', function(req, res, next) {
+    username = localStorage.getItem("username");
+    res.render('delete', {title: 'Delete Account'});
+});
+
 module.exports = router;

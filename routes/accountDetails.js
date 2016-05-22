@@ -8,7 +8,7 @@ var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
 
 /*GET profile page*/
-router.get('/', function(req,res){
+router.post('/', function(req,res){
     var client = new pg.Client(database);
     var users = [];
     username = localStorage.getItem("username");
