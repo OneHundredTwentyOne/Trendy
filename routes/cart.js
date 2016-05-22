@@ -8,7 +8,7 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 
 /*GET profile page*/
 router.get('/', function(req,res){
-    res.render('cart', { title: 'Cart', username: userName });
+    res.render('cart', { title: 'Cart', username: username });
 });
 
 

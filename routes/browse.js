@@ -86,31 +86,27 @@ router.get('/', function(req, res) {
   			}}
   	//if search		
 	}else {
-		var searchA = [];
-		username = localStorage.getItem("username");
-		pg.connect(database, function(err, client, done){
-			// Query items
-			var query = client.query("SELECT * FROM Stock WHERE LOWER(label) LIKE LOWER('%"+search+"%')", function(err, result) {
-				console.log(query);
-				// For each item
-				for (i = 0; i < result.rows.length; i++) {
-					// Add item
-					var item = {
-          			uid: result.rows[i].uid,
-          			image: result.rows[i].image,
-          			label: result.rows[i].label,
-          			summary: result.rows[i].summary,
-          			price: result.rows[i].price,
-          			sellername: result.rows[i].sellername,
-						description: result.rows[i].description
-        			};
-					searchA.push(item);
-				}
-			});
-
-				var str = searchA.length + " Results from search '" + search + "'";
-				res.render('browse', {title: str, items: searchA});
-		});
+		var items = [];
+		  username = localStorage.getItem("username");
+  		  pg.connect(database, function (err, client, done) {
+        var query = client.query("SELECT * FROM Stock WHERE LOWER(label) LIKE '%" + search +"%'", function (err, result) {
+        	console.log(query);
+        	for (var i = 0; i < result.rows.length; i++) {
+        		var item = {
+          		uid: result.rows[i].uid,
+          		image: result.rows[i].image,
+          		label: result.rows[i].label,
+          		summary: result.rows[i].summary,
+          		price: result.rows[i].price,
+          		sellername: result.rows[i].sellername,
+          		description: result.rows[i].description
+        		};
+        		items.push(item);
+      	}
+         var str = items.length + " results from search: " + search + "";
+    		res.render('browse', {title: str, items: items});
+        });
+	})
 	}
 });
 
