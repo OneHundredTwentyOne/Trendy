@@ -18,9 +18,6 @@ router.post('/',function(req, res) {
   username = localStorage.getItem("username");
   var file = req.body.file;
   console.log(file);
-  var ownFilePath = file.originalname;
-  var ownXmlFile = file.buffer;
-  console.log("Original name: " + ownFilePath + " " + ownXmlFile);
   var LABEL = req.body.label;
   var SIZE = req.body.size;
   var PRICE = req.body.price;
