@@ -63,7 +63,7 @@ block body
                 span.glyphicon.glyphicon-shopping-cart
                 |  Continue Shopping
             td
-              button.btn.btn-success(type='button')
-                | Checkout
-                span.glyphicon.glyphicon-play
+              form.well(id='form-purchase', method='post')
+                button(type='submit').btn.btn-primary.button-shopping-cart
+                  | Purchase
     include footer
