@@ -12,46 +12,44 @@
                 function cart() {
                     window.location.href = '/cart'
                 }
-        .register
-            button(type="button", onclick= "register()")
-                span.glyphicon.glyphicon-user
-                | &nbsp Register
-                span &nbsp &nbsp &nbsp
-            script.
-                function register() {
-                    window.location.href = '/register'
-                }
-        .login
-            li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown', onclick= "login()")
+        
+         if(username == null)       
+            .login
+                button(type="button", onclick= "login()")
                     span.glyphicon.glyphicon-log-in
-                    strong #{username}
-                    span.glyphicon.glyphicon-chevron-down
-                ul.dropdown-menu
-                    li
-                        .navbar-login
-                            .row
-                                .col-lg-4
-                                    p.text-center
-                                        span.glyphicon.glyphicon-user.icon-size
-                                .col-lg-8
-                                    p.text-left
-                                        strong #{username}
-                                    p.text-left.small correoElectronico@email.com
-                                    p.text-left
-                                        a.btn.btn-primary.btn-block.btn-sm(href='/profile') View Profile
-                    li.divider
-                    li
-                        .navbar-login.navbar-login-session
-                            .row
-                                .col-lg-12
-                                    p
-                                        a.btn.btn-danger.btn-block(href='#') Log Out
-
-            script.
-                function login() {
-                	if(username ==  null){
-                    window.location.href = '/login'
-                    }
-                }
-         #{failed}
+                    | &nbsp Login
+                    span &nbsp &nbsp &nbsp
+                script.
+                    function login() {
+                        window.location.href = '/login'
+                    } 
+             .register
+                 button(type="button", onclick= "register()")
+                    span.glyphicon.glyphicon-user
+                    | &nbsp Register
+                    span &nbsp &nbsp &nbsp
+              script.
+                  function register() {
+                      window.location.href = '/register'
+                  }          
+         else
+             .login
+                button(type="button", onclick= "login()")
+                    span.glyphicon.glyphicon-user
+                    | &nbsp #{username}
+                    span &nbsp &nbsp &nbsp   
+                script.
+                    function login() {
+                        window.location.href = '/profile'
+                    }  
+             .register
+                button(type="button", onclick= "register()")
+                   span.glyphicon.glyphicon-log-out
+                   | &nbsp Logout
+                   span &nbsp &nbsp &nbsp
+             script.
+                 function register() {
+                     username = null
+                     window.location.href = '/'
+                 }             
+            
