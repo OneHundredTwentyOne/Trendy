@@ -39,7 +39,7 @@ router.get('/', function(req,res){
             }
             selling = items;
             console.log(items);
-            res.render('myProducts', { title: 'Selling', username: username, selling: selling });
+            res.render('myProducts', { title: 'My Products', username: username, selling: selling });
         });
     });
 });
