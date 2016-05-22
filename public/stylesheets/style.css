@@ -31,6 +31,9 @@ p.seller{
 .well.well-sm{
 	width: 500px;
 }
+ul.unstyled{
+	list-style: none;
+}
 /*Logo*/
 .img-responsive{
     margin-left: auto;

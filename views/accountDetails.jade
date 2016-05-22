@@ -57,8 +57,21 @@ block body
                                                 a(href='myProducts') My Products
                 .container
                     for user in users
-                       p  #{user.username}
-                       p #{user.realname}
+                       .row
+                           .span12
+                               .well.well-small.clearfix
+                                   .row-fluid
+                                       .span2
+                                           img.img-polaroid(src='https://cdn4.iconfinder.com/data/icons/security-overcolor/512/user_profile-128.png')
+                                       .span4
+                                        h2 #{user.realname}
+                                        ul.unstyled
+                                            li
+                                                span.glyphicon.glyphicon-user
+                                                 |  #{user.username}
+                                            li
+                                                span.glyphicon.glyphicon-envelope
+                                                 |  #{user.email}
 
 
 

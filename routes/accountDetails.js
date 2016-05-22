@@ -28,7 +28,8 @@ router.get('/', function(req,res){
             for (var i = 0; i < result.rows.length; i++) {
                 var user = {
                     username: result.rows[i].username,
-                    realname: result.rows[i].realname
+                    realname: result.rows[i].realname,
+                    email: result.rows[i].email
                 };
                 users.push(user);
             }

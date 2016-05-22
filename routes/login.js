@@ -20,7 +20,6 @@ router.post('/', function (req,res,next) {
         var PASSWORD = req.body.pass;
         username = req.body.user;
         var fail = "Failed to login. Please try again.";
-        console.log(fail);
         console.log(USERNAME + " " + PASSWORD);
         var client = new pg.Client(database);
     		pg.connect(database,function(err,client,done){
