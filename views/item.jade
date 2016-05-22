@@ -41,6 +41,10 @@ block body
                         img(id='search-results-image', src='images/#{items.image}.png', alt='Product')
                         .caption-full
                             h4.pull-right $#{items.price}
+                                &nbsp
+                                button(type='submit').btn.btn-primary.button-sign-in
+                                    span.glyphicon.glyphicon-shopping-cart
+                                    | Add To Cart
                             h4
                                 a(href='#') #{items.label}
                             p
