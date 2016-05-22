@@ -9,6 +9,7 @@ var totalPrice = 0;
 
 /*GET profile page*/
 router.get('/', function(req,res){
+    totalPrice  = 0;
     var items = [];
     username = localStorage.getItem("username");
     pg.connect(database, function (err, client, done) {
