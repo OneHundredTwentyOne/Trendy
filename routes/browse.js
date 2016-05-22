@@ -7,6 +7,7 @@ var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
 
 router.get('/', function(req, res) {
+	username = localStorage.getItem("username");
 	var search = req.query.search;
 	// If no search 
 	if(search == undefined){
@@ -15,7 +16,6 @@ router.get('/', function(req, res) {
 		//If no categories and no search
 		if(cat == undefined && gen == undefined){
 		  var items = [];
-		  username = localStorage.getItem("username");
   		  pg.connect(database, function (err, client, done) {
         var query = client.query("SELECT * FROM Stock", function (err, result) {
         	for (var i = 0; i < result.rows.length; i++) {
@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
         		items.push(item);
       	}
          var str = "All Products";
-    		res.render('browse', {title: str, items: items});
+    		res.render('browse', {title: str, items: items, username: username});
         })
         });
         //if no search and categories
@@ -56,7 +56,7 @@ router.get('/', function(req, res) {
         		category.push(item);
         		}
         		var str = "All "+ cat;
-    			res.render('browse', {title: str, items: category});
+    			res.render('browse', {title: str, items: category, username: username});
   				})
   				});
   				//if no search and categories are products
@@ -80,7 +80,7 @@ router.get('/', function(req, res) {
         		gender.push(item);
         		}
         		var str = "All "+ cat;
-    			res.render('browse', {title: str, items: gender});
+    			res.render('browse', {title: str, items: gender, username: username});
   				})
   				});
   			}}
@@ -104,7 +104,7 @@ router.get('/', function(req, res) {
         		items.push(item);
       	}
          var str = items.length + " results from search: " + search + "";
-    		res.render('browse', {title: str, items: items});
+    		res.render('browse', {title: str, items: items, username: username});
         });
 	})
 	}

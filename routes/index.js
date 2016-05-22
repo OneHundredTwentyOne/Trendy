@@ -23,11 +23,10 @@ router.get('/', function(req, res, next) {
         };
         items.push(item);
       }
-    res.render('index', {title: 'Home', items: items});
+    res.render('index', {title: 'Home', items: items, username: username});
   })
 });
 });
-
 
 router.get('/contact', function(req, res, next) {
     username = localStorage.getItem("username");

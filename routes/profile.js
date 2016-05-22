@@ -24,7 +24,7 @@ router.get('/', function(req,res){
             }
             buy = result;
         })
-    })
+    });
     res.render('profile', { title: 'Profile', username: username });
 });
 
