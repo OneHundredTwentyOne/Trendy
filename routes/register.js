@@ -16,7 +16,8 @@ router.post('/', function (req,res,next) {
         var NAME = req.body.realname;
         var USERNAME = req.body.user;
         var PASSWORD = req.body.pass;
-        var EMAIL = req.body.email;
+        var EMAIL = req.body.email; 
+        var ADDRESS = req.body.address;
         username = req.body.user;
         console.log(USERNAME + " " + PASSWORD);
         var client = new pg.Client(database);
@@ -25,7 +26,7 @@ router.post('/', function (req,res,next) {
     				return console.error('could not connect to postgres', err);
   					}
   					console.log('Connected to database');
-  					 var query = ("INSERT INTO Users (Username, RealName, Password, Email) VALUES ($1, $2, $3, $4)");
+  					 var query = ("INSERT INTO Users (Username, RealName, Password, Email, Address) VALUES ($1, $2, $3, $4, $5)");
   					  client.query(query,[USERNAME, NAME, PASSWORD, EMAIL], function(error, result){
 
             console.log(result);

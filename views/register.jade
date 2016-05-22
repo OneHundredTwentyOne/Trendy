@@ -18,17 +18,20 @@ block body
         br
         form.well(id='form-login', method='post')
             .form-group
-                label Name
-                input.form-control(type='text', name='realname')
+                label Full Name *
+                input.form-control(type='text', name='realname', required)
             .form-group
-                label Username
-                input.form-control(type='text', id='user-tf', name='user')
+                label Username *
+                input.form-control(type='text', id='user-tf', name='user', required)
             .form-group
-                label Email
-                input.form-control(type='text', id='user-tf', name='email')
+                label Email *
+                input.form-control(type='text', id='user-tf', name='email', required)
             .form-group
-                label Password
-                input.form-control(type='password', id='pass-tf', name='pass')
+                label Address *
+                textarea#comment.form-control(rows='5', name='address', required)    
+            .form-group
+                label Password *
+                input.form-control(type='password', id='pass-tf', name='pass', required)
             .controls
                 button(type='submit').btn.btn-primary.button-sign-in
                     span.glyphicon.glyphicon-log-in
