@@ -11,5 +11,28 @@ block body
     .navbar-main
         +nav-pills-justified([{text:"HOME",href:"/"},{text:"BROWSE",href:"/Browse"}, {text:"COMMUNITY",href:"#"}, {text:"ABOUT",href:"/about"}, {text:"CONTACT",href:"/contact"}],0)
         hr
+        .title Contact Us
+        br
+        .subtitle Fill in the form below to send us a message. We will reply as soon as we can.
+        br
+        form.well(id='form-login', method='post')
+            .form-group
+                label Name
+                input.form-control(type='text', name='realname', required)
+            .form-group
+                label Email
+                input.form-control(type='text', id='user-tf', name='email', required)
+            .form-group
+                label Subject
+                input.form-control(type='text', id='user-tf', name='subject', required)
+            .form-group
+                label Message
+                textarea#comment.form-control(rows='5', name='message', required)
+            .controls
+                button(type='submit').btn.btn-primary.button-sign-in
+                    span.glyphicon.glyphicon-log-in
+                    | &nbsp Send Message
+            .clearfix
+
         br
     include footer    
