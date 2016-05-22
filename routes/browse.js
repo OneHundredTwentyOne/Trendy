@@ -8,80 +8,84 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 
 router.get('/', function(req, res) {
 	var search = req.query.search;
-	// If no search then display everything
+	// If no search 
 	if(search == undefined){
 		var cat = req.query.typeid;
+		//If no categories and no search
 		if(cat == undefined){
 		  var items = [];
 		  username = localStorage.getItem("username");
-  pg.connect(database, function (err, client, done) {
-    // Query items
-    var query = client.query("SELECT * FROM Stock", function (err, result) {
-      for (var i = 0; i < result.rows.length; i++) {
-        var item = {
-          uid: result.rows[i].uid,
-          image: result.rows[i].image,
-          label: result.rows[i].label,
-          summary: result.rows[i].summary,
-          price: result.rows[i].price,
-          sellername: result.rows[i].sellername,
-          description: result.rows[i].description
-        };
-        items.push(item);
-      }
-      var str = "All Products";
-    res.render('browse', {title: str, items: items});
-  })
-  });}else if(cat != 'women' | cat != 'men'){
-  	var cat2 = "'" + req.query.typeid + "'";
-  	pg.connect(database, function (err, client, done) {
-    // Query items
-    var category =[];
-    username = localStorage.getItem("username");
-    var query = client.query("SELECT * FROM Stock WHERE category =" +cat2, function (err, result) {
-    	console.log("CAT3:" + cat2);
-		for (var i = 0; i < result.rows.length; i++) {
-        var item = {
-          uid: result.rows[i].uid,
-          image: result.rows[i].image,
-          label: result.rows[i].label,
-          summary: result.rows[i].summary,
-          price: result.rows[i].price,
-			 sellername: result.rows[i].sellername,
-			 description: result.rows[i].description
-        };
-        category.push(item);
-        }
-        var str = "All "+ cat;
-    res.render('browse', {title: str, items: category});
-  })
-  });
-  }else if(cat == 'women' | cat == 'men'){
-  	var cat3 = "'" + req.query.typeid + "'";
-  	pg.connect(database, function (err, client, done) {
-    // Query items
-    var gender =[];
-    username = localStorage.getItem("username");
-    var query = client.query("SELECT * FROM Stock WHERE gender =" +cat3, function (err, result) {
+  		  pg.connect(database, function (err, client, done) {
+        var query = client.query("SELECT * FROM Stock", function (err, result) {
+        	for (var i = 0; i < result.rows.length; i++) {
+        		var item = {
+          		uid: result.rows[i].uid,
+          		image: result.rows[i].image,
+          		label: result.rows[i].label,
+          		summary: result.rows[i].summary,
+          		price: result.rows[i].price,
+          		sellername: result.rows[i].sellername,
+          		description: result.rows[i].description
+        		};
+        		items.push(item);
+      	}
+         var str = "All Products";
+    		res.render('browse', {title: str, items: items});
+        })
+        });
+        //if no search and categories
+      }else if(cat != undefined){
+  		 	cat = "'" + req.query.typeid + "'";
+  			//if no search and categories and gender
+			if(cat.localeCompare('clothes')| cat.localeCompare('shoes')| cat.localeCompare('accessories')| cat.localeCompare('swimwear')){
+  				pg.connect(database, function (err, client, done) {
+    			var category =[];
+    			username = localStorage.getItem("username");
+    			var query = client.query("SELECT * FROM Stock WHERE category =" +cat, function (err, result) {
+				for (var i = 0; i < result.rows.length; i++) {
+        			var item = {
+          			uid: result.rows[i].uid,
+          			image: result.rows[i].image,
+          			label: result.rows[i].label,
+          			summary: result.rows[i].summary,
+          			price: result.rows[i].price,
+			 			sellername: result.rows[i].sellername,
+			 			description: result.rows[i].description
+        		};
+        		category.push(item);
+        		}
+        		var str = "All "+ cat;
+    			res.render('browse', {title: str, items: category});
+  				})
+  				});
+  				//if no search and categories are products
+  			}else{
+  				console.log("CATcate:" + cat);
+  				pg.connect(database, function (err, client, done) {
+    			// Query items
+    			var gender =[];
+    			username = localStorage.getItem("username");
+    			var query = client.query("SELECT * FROM Stock WHERE gender =" +cat, function (err, result) {
     	
-		for (var i = 0; i < result.rows.length; i++) {
-        var item = {
-          uid: result.rows[i].uid,
-          image: result.rows[i].image,
-          label: result.rows[i].label,
-          summary: result.rows[i].summary,
-          price: result.rows[i].price,
-          sellername: result.rows[i].sellername,
-          description: result.rows[i].description
-        };
-        gender.push(item);
-        }
-        var str = "All "+ cat3;
-    res.render('browse', {title: str, items: gender});
-  })
-  });
-  }
-	} else {
+				for (var i = 0; i < result.rows.length; i++) {
+        		var item = {
+          		uid: result.rows[i].uid,
+          		image: result.rows[i].image,
+          		label: result.rows[i].label,
+          		summary: result.rows[i].summary,
+          		price: result.rows[i].price,
+          		sellername: result.rows[i].sellername,
+          		description: result.rows[i].description
+        		};
+        		gender.push(item);
+        		}
+        		var str = "All "+ cat;
+    			res.render('browse', {title: str, items: gender});
+  				})
+  				});
+  			}}
+  	//if search		
+	}else {
 		var searchA = [];
 		username = localStorage.getItem("username");
 		pg.connect(database, function(err, client, done){
@@ -92,14 +96,14 @@ router.get('/', function(req, res) {
 				for (i = 0; i < result.rows.length; i++) {
 					// Add item
 					var item = {
-          uid: result.rows[i].uid,
-          image: result.rows[i].image,
-          label: result.rows[i].label,
-          summary: result.rows[i].summary,
-          price: result.rows[i].price,
-          sellername: result.rows[i].sellername,
-			description: result.rows[i].description
-        };
+          			uid: result.rows[i].uid,
+          			image: result.rows[i].image,
+          			label: result.rows[i].label,
+          			summary: result.rows[i].summary,
+          			price: result.rows[i].price,
+          			sellername: result.rows[i].sellername,
+						description: result.rows[i].description
+        			};
 					searchA.push(item);
 				}
 			});
@@ -111,7 +115,6 @@ router.get('/', function(req, res) {
 			});
 		});
 	}
-
 });
 
 module.exports = router;
