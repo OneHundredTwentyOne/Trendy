@@ -32,7 +32,7 @@ router.get('/', function(req,res){
                     uid: result.rows[i].uid,
                     image: result.rows[i].image,
                     label: result.rows[i].label,
-                    summary: result.rows[i].summary,
+                    description: result.rows[i].description,
                     price: result.rows[i].price
                 };
                 items.push(item);

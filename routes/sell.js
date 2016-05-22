@@ -5,25 +5,22 @@ var database =  "postgres://mxoilrnicwhdji:OhBRE_r8LgodxHHZ_ROjGFukd4@ec2-54-163
 var username = null;
 var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
-var fileName = "";
 var multer = require('multer');
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '/public/images')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
+var storage = multer.memoryStorage();
+var upload = multer({
+  storage: storage,
+  dest: './public/images'
 });
-
-var upload = multer({ storage: storage });
 router.use(upload.single('file'));
 
 /*GET sell page*/
-router.post('/',upload.single('file'), function(req, res) {
+router.post('/',function(req, res) {
   username = localStorage.getItem("username");
-  var FILE = req.body.file;
-  console.log(FILE);
+  var file = req.body.file;
+  console.log(file);
+  var ownFilePath = file.originalname;
+  var ownXmlFile = file.buffer;
+  console.log("Original name: " + ownFilePath + " " + ownXmlFile);
   var LABEL = req.body.label;
   var SIZE = req.body.size;
   var PRICE = req.body.price;
@@ -39,7 +36,7 @@ router.post('/',upload.single('file'), function(req, res) {
     }
     console.log('Connected to database');
     var query = ("INSERT INTO Stock (image, label, size, price, description, sellername, category, condition, gender) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)");
-    client.query(query, [FILE, LABEL, SIZE, PRICE, DESCRIPTION, SELLERNAME, CATEGORY, CONDITION, GENDER], function (error, result) {
+    client.query(query, [file, LABEL, SIZE, PRICE, DESCRIPTION, SELLERNAME, CATEGORY, CONDITION, GENDER], function (error, result) {
       console.log(result);
       console.log(error);
       if (error) {
@@ -59,5 +56,7 @@ router.get("/", function(req,res){
   username = localStorage.getItem("username");
   res.render('sell', {title: 'Add A Product', username: username});
 });
+
+
 
 module.exports = router;

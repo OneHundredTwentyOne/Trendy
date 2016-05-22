@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var myProducts = require('./routes/myProducts');
@@ -16,7 +15,7 @@ var sell = require('./routes/sell');
 var profile = require('./routes/profile');
 var cart = require('./routes/cart');
 var item = require('./routes/item');
-
+var multer = require('multer');
 
 var app = express();
 
@@ -31,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(multer({dest:'./public/images/'}).single('file'));
 app.use('/', routes);
 app.use('/browse', browse);
 app.use('/users', users);
