@@ -11,8 +11,9 @@ router.get('/', function(req, res) {
 	// If no search 
 	if(search == undefined){
 		var cat = req.query.typeid;
+		var gen = req.query.gender;
 		//If no categories and no search
-		if(cat == undefined){
+		if(cat == undefined && gen == undefined){
 		  var items = [];
 		  username = localStorage.getItem("username");
   		  pg.connect(database, function (err, client, done) {
@@ -34,7 +35,7 @@ router.get('/', function(req, res) {
         })
         });
         //if no search and categories
-      }else if(cat != undefined){
+      }else if(gen == undefined){
   		 	cat = "'" + req.query.typeid + "'";
   			//if no search and categories and gender
 			if(cat.localeCompare('clothes')| cat.localeCompare('shoes')| cat.localeCompare('accessories')| cat.localeCompare('swimwear')){
@@ -59,13 +60,12 @@ router.get('/', function(req, res) {
   				})
   				});
   				//if no search and categories are products
-  			}else{
-  				console.log("CATcate:" + cat);
+  			}else if(cat == undefined){
   				pg.connect(database, function (err, client, done) {
     			// Query items
     			var gender =[];
     			username = localStorage.getItem("username");
-    			var query = client.query("SELECT * FROM Stock WHERE gender =" +cat, function (err, result) {
+    			var query = client.query("SELECT * FROM Stock WHERE gender =" +gen, function (err, result) {
     	
 				for (var i = 0; i < result.rows.length; i++) {
         		var item = {
@@ -91,8 +91,8 @@ router.get('/', function(req, res) {
 		pg.connect(database, function(err, client, done){
 			// Query items
 			var query = client.query("SELECT * FROM Stock WHERE LOWER(label) LIKE LOWER('%"+search+"%')", function(err, result) {
+				console.log(query);
 				// For each item
-				console.log(result);
 				for (i = 0; i < result.rows.length; i++) {
 					// Add item
 					var item = {
@@ -108,11 +108,8 @@ router.get('/', function(req, res) {
 				}
 			});
 
-			query.on('end', function(){
-				var str = "- " + searchA.length + " Results from search '" + search + "'";
+				var str = searchA.length + " Results from search '" + search + "'";
 				res.render('browse', {title: str, items: searchA});
-				done();
-			});
 		});
 	}
 });
