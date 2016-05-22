@@ -28,4 +28,14 @@ router.get('/', function(req, res, next) {
 });
 });
 
+
+router.get('/contact', function(req, res, next) {
+    username = localStorage.getItem("username");
+    res.render('contact', {title: 'Contact Us'});
+});
+
+router.get('/about', function(req, res, next) {
+    username = localStorage.getItem("username");
+    res.render('about', {title: 'About Us'});
+});
 module.exports = router;
