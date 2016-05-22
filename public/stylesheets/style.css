@@ -33,7 +33,20 @@ p.seller{
 }
 ul.unstyled{
 	list-style: none;
+	
 }
+
+li.dropdown{
+	 list-style: none;
+    display: inline-block;
+    float: right;
+    margin-top: 13px;
+}
+
+ul.dropdown-menu{
+	width: 200px;
+}
+
 /*Logo*/
 .img-responsive{
     margin-left: auto;

@@ -22,12 +22,36 @@
                     window.location.href = '/register'
                 }
         .login
-            button(type="button", onclick= "login()")
-                span.glyphicon.glyphicon-log-in
-                | &nbsp #{username}
-                span &nbsp &nbsp &nbsp
+            li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', onclick= "login()")
+                    span.glyphicon.glyphicon-log-in
+                    strong #{username}
+                    span.glyphicon.glyphicon-chevron-down
+                ul.dropdown-menu
+                    li
+                        .navbar-login
+                            .row
+                                .col-lg-4
+                                    p.text-center
+                                        span.glyphicon.glyphicon-user.icon-size
+                                .col-lg-8
+                                    p.text-left
+                                        strong #{username}
+                                    p.text-left.small correoElectronico@email.com
+                                    p.text-left
+                                        a.btn.btn-primary.btn-block.btn-sm(href='/profile') View Profile
+                    li.divider
+                    li
+                        .navbar-login.navbar-login-session
+                            .row
+                                .col-lg-12
+                                    p
+                                        a.btn.btn-danger.btn-block(href='#') Log Out
+
             script.
                 function login() {
+                	if(username ==  null){
                     window.location.href = '/login'
+                    }
                 }
          #{failed}
