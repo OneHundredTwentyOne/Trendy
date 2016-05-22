@@ -59,25 +59,54 @@ block body
                                             td
                                                 a(href='http://www.jquery2dotnet.com') Manage Products
                 .container
+                    h2 &nbsp #{title}  
+                    h5 &nbsp &nbsp Fill in all field below in order to add a product to the site to sell.
                     form.well(id='form-login', method='post')
                         .form-group
-                            label Label
-                            input.form-control(type='text', name='label')
+                            label Label *
+                            input.form-control(type='text', name='label', required)
                         .form-group
-                            label Size
-                            input.form-control(type='text', name='size')
+                            label Size *
+                            input.form-control(type='text', name='size', required)
                         .form-group
-                            label Price
-                            input.form-control(type='numeric', name='price')
+                            label Price *
+                            input.form-control(type='numeric', name='price', required)
                         .form-group
-                            label Description
-                            input.form-control(type = 'text', name = 'description')
+                            label Description *
+                            textarea#comment.form-control(rows='5', name='description', required)
                         .form-group
-                            label Category
-                            input.form-control(type = 'text', name = 'category')
+                            label Category *
+                            .radio
+                                label
+                                    input(type='radio', name='category', value ='clothes')
+                                    |  Clothes
+                            .radio
+                                label
+                                    input(type='radio', name='category', value ='shoes')
+                                    | Shoes
+                            .radio
+                                label
+                                    input(type='radio', name='category', value ='accessories')
+                                    | Accessories
+                            .radio
+                                label
+                                    input(type='radio', name='category', , value ='swimwear')
+                                    | Swimwear
+        
+
                         .form-group
-                            label Condition
-                            input.form-control(type = 'text', name = 'condition ')
+                            label Condition *
+                            input.form-control(type = 'text', name = 'condition', required)
+                         .form-group
+                            label Gender *
+                            .radio
+                                label
+                                    input(type='radio', name='gender', value ='women')
+                                    |  Womens
+                            .radio
+                                label
+                                    input(type='radio', name='gender', value ='men')
+                                    | Mens    
                         .form(name = "upload", action = "/upload", method = "post", enctype="multipart/form-data")
                             input(type="file", name="file")
                         br

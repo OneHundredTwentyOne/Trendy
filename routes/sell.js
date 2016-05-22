@@ -31,14 +31,15 @@ router.post('/',upload.single('file'), function(req, res) {
   var SELLERNAME = username;
   var CATEGORY = req.body.category;
   var CONDITION = req.body.condition;
+  var GENDER = req.body.genders;
   var client = new pg.Client(database);
   pg.connect(database, function (err, client, done) {
     if (err) {
       return console.error('could not connect to postgres', err);
     }
     console.log('Connected to database');
-    var query = ("INSERT INTO Stock (image, label, size, price, description, sellername, category, condition) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)");
-    client.query(query, [FILE, LABEL, SIZE, PRICE, DESCRIPTION, SELLERNAME, CATEGORY, CONDITION], function (error, result) {
+    var query = ("INSERT INTO Stock (image, label, size, price, description, sellername, category, condition, gender) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)");
+    client.query(query, [FILE, LABEL, SIZE, PRICE, DESCRIPTION, SELLERNAME, CATEGORY, CONDITION, GENDER], function (error, result) {
       console.log(result);
       console.log(error);
       if (error) {
@@ -56,7 +57,7 @@ router.post('/',upload.single('file'), function(req, res) {
 
 router.get("/", function(req,res){
   username = localStorage.getItem("username");
-  res.render('sell', {title: 'Sell', username: username});
+  res.render('sell', {title: 'Add A Product', username: username});
 });
 
 module.exports = router;
