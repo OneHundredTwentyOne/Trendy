@@ -1,3 +1,4 @@
+
 extends ../node_modules/jade-bootstrap/_bootstrap
 append styles
     link(rel='stylesheet', href='/stylesheets/style.css')
@@ -62,11 +63,21 @@ block body
                     .col-md-9
                         .row.main
                             for item in items
-                                .col-sm-4.col-lg-4.col-md-4
+                                .col-sm-3.col-lg-3.col-md-3
                                     .thumbnail
                                         img(id='search-results-image', src='images/#{item.image}.png', alt='Product')
-                                        .caption
-                                            h4.pull-right $#{item.price}
-                                            h4
-                                                a(href="item?itemid=#{item.uid}") #{item.label}
+                                    .caption
+                                         h4.pull-right $#{item.price}
+                                         h4
+                                             a(href="item?itemid=#{item.uid}") #{item.label}
+                                         p.seller    
+                                             | #{item.sellername}
+                                    .ratings
+                                        p.pull-right 15 reviews
+                                        p
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star
+                                            span.glyphicon.glyphicon-star      
     include footer

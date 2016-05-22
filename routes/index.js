@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   pg.connect(database, function (err, client, done) {
     // Query items
     var query = client.query("SELECT * FROM Stock", function (err, result) {
-      for (var i = 0; i < 6; i++) {
+      for (var i = 0; i < 8; i++) {
         var item = {
           uid: result.rows[i].uid,
           image: result.rows[i].image,
