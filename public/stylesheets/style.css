@@ -18,6 +18,9 @@ html, body {
     position: absolute;
     right: 0px;
 }
+.success{
+	width: 700px;
+}
 p.seller{
 	font-style: italic;
 }

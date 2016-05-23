@@ -11,3 +11,53 @@ block body
     .navbar-main
         +nav-pills-justified([{text:"HOME",href:"/"},{text:"BROWSE",href:"/Browse"}, {text:"COMMUNITY",href:"#"}, {text:"ABOUT",href:"/about"}, {text:"CONTACT",href:"/contact"}],0)
         hr
+        .container.main
+            .row
+                .col-xs-12.col-sm-12.col-md-3.col-lg-3
+                    .panel.panel-default
+                        .panel-heading
+                            h4 Shop by Gender
+                        .panel-body
+                            ul#cat-navi.nav.nav-list
+                                li.active
+                                    a(href="/browse?gender=women") Womens
+                                li
+                                    a(href="/browse?gender=men") Mens
+                    .panel.panel-default.visible-lg
+                        .panel-heading
+                            h4 Shop By Product
+                        .panel-body
+                            ul#cat-navi2.nav.nav-list
+                                li.active
+                                    a(href="/browse?typeid=clothes") Clothes
+                                li
+                                    a(href="/browse?typeid=shoes") Shoes
+                                li
+                                    a(href="/browse?typeid=accessories") Accessories
+                                li
+                                    a(href="/browse?typeid=swimwear") Swimwear
+                
+                .col-xs-12.col-sm-12.col-md-3.col-lg-3
+                    h2 &nbsp #{title}
+                    br
+                    .success
+                        +panel-success("Log out Successful!")
+                            p You can continue browsing the website without being logged in.
+                            +a-btn-primary(type="button", onclick= "home()")
+                                span.glyphicon.glyphicon-home
+                                | &nbsp Go Home
+                                span &nbsp &nbsp &nbsp
+                            script.
+                                function home() {
+                                    window.location.href = '/index'
+                                }
+                            span &nbsp    
+                            +a-btn(type="button", onclick= "login()")
+                                span.glyphicon.glyphicon-home
+                                | &nbsp Login Back In
+                                span &nbsp &nbsp &nbsp
+                            script.
+                                function login() {
+                                    window.location.href = '/login'
+                                }    
+    include footer    

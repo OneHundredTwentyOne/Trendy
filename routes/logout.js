@@ -11,7 +11,7 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 router.get('/', function(req, res) {
     username = null;
     localStorage.clear();
-    res.render('logout', { title: 'Logged Out' , username: username});
+    res.render('logout', { title: 'You Logged Out!' , username: username});
 });
 
 module.exports  = router;
