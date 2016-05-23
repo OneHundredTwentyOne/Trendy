@@ -9,9 +9,14 @@ var LocalStorage = require('node-localstorage').LocalStorage,
 
 /*GET login page*/
 router.get('/', function(req, res) {
-    username = null;
+    pg.connect(database, function (err, client, done) {
+    // Query items
+    var query = client.query("DELETE FROM cart WHERE username='"+ username + "'", function (err, result) {
+	 username = null;
     localStorage.clear();
     res.render('logout', { title: 'You Logged Out!' , username: username});
+  })
 });
+})
 
 module.exports  = router;

@@ -41,23 +41,5 @@ block body
                     h2 &nbsp #{title}
                     br
                     .success
-                        +panel-success("Log out Successful!")
-                            p You can continue browsing the website without being logged in.
-                            +a-btn-primary(type="button", onclick= "home()")
-                                span.glyphicon.glyphicon-home
-                                | &nbsp Go Home
-                                span &nbsp &nbsp &nbsp
-                            script.
-                                function home() {
-                                    window.location.href = '/index'
-                                }
-                            span &nbsp    
-                            +a-btn(type="button", onclick= "login()")
-                                span.glyphicon.glyphicon-home
-                                | &nbsp Login Back In
-                                span &nbsp &nbsp &nbsp
-                            script.
-                                function login() {
-                                    window.location.href = '/login'
-                                }    
+                        +alert-i-success("Log out successful!")    
     include footer    
