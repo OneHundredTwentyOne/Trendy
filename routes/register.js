@@ -27,7 +27,7 @@ router.post('/', function (req,res,next) {
   					}
   					console.log('Connected to database');
   					 var query = ("INSERT INTO Users (Username, RealName, Password, Email, Address) VALUES ($1, $2, $3, $4, $5)");
-  					  client.query(query,[USERNAME, NAME, PASSWORD, EMAIL], function(error, result){
+  					  client.query(query,[USERNAME, NAME, PASSWORD, EMAIL, ADDRESS], function(error, result){
 
             console.log(result);
             console.log(error);

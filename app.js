@@ -8,15 +8,16 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var myProducts = require('./routes/myProducts');
 var accountDetails = require('./routes/accountDetails');
+var editDetails = require('./routes/editDetails');
 var browse = require('./routes/browse');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 var register = require('./routes/register');
 var sell = require('./routes/sell');
 var profile = require('./routes/profile');
 var cart = require('./routes/cart');
 var item = require('./routes/item');
 var multer = require('multer');
-
 var app = express();
 
 // view engine setup
@@ -35,14 +36,15 @@ app.use('/', routes);
 app.use('/browse', browse);
 app.use('/users', users);
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/register', register);
 app.use('/sell', sell);
 app.use('/profile', profile);
 app.use('/accountDetails', accountDetails);
+app.use('/editDetails', editDetails);
 app.use('/myProducts', myProducts);
 app.use('/item', item);
 app.use('/cart',cart);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

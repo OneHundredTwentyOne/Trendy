@@ -43,14 +43,11 @@
                         window.location.href = '/profile'
                     }  
              .register
-                button(type="button", onclick= "register()")
+                button(type="button", onclick= "logout()")
                    span.glyphicon.glyphicon-log-out
                    | &nbsp Logout
                    span &nbsp &nbsp &nbsp
              script.
-                 function register() {
-                     window.localStorage.removeItem("username")
-                     window.localStorage.clear()
-                     window.console.log("Hello")
-                     window.location.href = '/'
+                 function logout() {
+                     window.location.href = '/logout'
                  }

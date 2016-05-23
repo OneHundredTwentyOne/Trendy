@@ -1,0 +1,36 @@
+extends ../node_modules/jade-bootstrap/_bootstrap
+append styles
+    link(rel='stylesheet', href='/stylesheets/style.css')
+head
+    title= title
+
+block body
+    include topnav
+    .container
+    +img-responsive ("images/logo.png", "Logo")
+    .navbar-main
+        +nav-pills-justified([{text: "HOME", href: "/"}, {text: "Browse", href: "/Browse"}, {
+            text: "COMMUNITY",
+            href: "#"
+        }, {text: "ABOUT", href: "/about"}, {text: "CONTACT", href: "/contact"}],0)
+        hr
+        .title Edit Details
+        br
+        form.well(id='form-login', method='post')
+            .form-group
+                label Change Name
+                input.form-control(type='text', name='name')
+            .form-group
+                label Change Email
+                input.form-control(type='text', id='user-tf', name='email')
+            .form-group
+                label Change Address
+                textarea#comment.form-control(rows='5', name='address')
+            .controls
+                button(type='submit').btn.btn-primary.button-sign-in
+                    span.glyphicon.glyphicon-log-in
+                    | &nbsp Save Changes
+            .clearfix
+
+        br
+    include footer

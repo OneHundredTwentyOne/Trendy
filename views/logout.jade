@@ -1,0 +1,13 @@
+extends ../node_modules/jade-bootstrap/_bootstrap
+append styles
+    link(rel='stylesheet', href='/stylesheets/style.css')
+head
+    title= title
+
+block body
+    include topnav
+    .container
+    +img-responsive ("images/logo.png", "Logo")
+    .navbar-main
+        +nav-pills-justified([{text:"HOME",href:"/"},{text:"BROWSE",href:"/Browse"}, {text:"COMMUNITY",href:"#"}, {text:"ABOUT",href:"/about"}, {text:"CONTACT",href:"/contact"}],0)
+        hr
