@@ -70,14 +70,5 @@ block body
          else
              .col-sm-12.col-md-10.col-md-offset-1
                  h2 &nbsp #{title}
-                 +panel-warning("Your Cart is Empty!")  
-                     p Add products to your cart!
-                     +a-btn-primary(type="button", onclick= "home()")
-                          span.glyphicon.glyphicon-shopping-cart
-                          | &nbsp Go Shopping
-                          span &nbsp &nbsp &nbsp
-                     script.
-                         function home() {
-                             window.location.href = '/index'
-                         }                 
+                 +alert-i-warning("Your cart is empty!")              
     include footer
