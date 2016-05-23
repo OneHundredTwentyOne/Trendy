@@ -6,3 +6,5 @@ var username = null;
 var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
 var totalPrice = 0;
+
+module.exports = router;
