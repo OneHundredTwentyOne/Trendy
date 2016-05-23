@@ -55,5 +55,33 @@ block body
                                         tr
                                             td
                                                 a(href='myProducts') My Products
-              
+                .col-md-9
+                    .row
+                        for item in selling
+                            .col-sm-12.col-md-10.col-md-offset-1
+                                table.table.table-hover
+                                    thead
+                                        tr
+                                            th Product
+                                            th.text-center Price
+                                            th.text-center Order Number
+                                            th.text-center Tracking Number
+                                    tbody
+                                        tr
+                                            td.col-sm-8.col-md-6
+                                                .media
+                                                    a.thumbnail.pull-left(href='#')
+                                                        img.media-object(src='images/#{item.image}.png', style='width: 72px; height: 72px;')
+                                                    .media-body
+                                                        h4.media-heading
+                                                            p #{item.label}
+                                                        h5.media-heading
+                                                            | Seller:
+                                                            p #{item.sellername}
+                                            td.col-sm-1.col-md-1.text-center
+                                                strong $#{item.price}
+                                            td.col-sm-1.col-md-1.text-center
+                                                strong #{item.ordernum}
+                                            td.col-sm-1.col-md-1
+                                                strong #{item.tracking}
     include footer

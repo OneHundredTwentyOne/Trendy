@@ -58,7 +58,7 @@ router.post('/', function (req,res,next) {
             else{
                 localStorage.setItem("username",username);
                 var query = client.query("DELETE FROM cart WHERE username='"+ username + "'");
-                res.render('purchase', { title:  'Order Confirmed'});
+                res.render('purchase', { title:  'Order Confirmed', username: username});
                 return true;
                 }
             })
