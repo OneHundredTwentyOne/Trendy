@@ -34,7 +34,7 @@ router.get('/', function(req,res){
                 users.push(user);
             }
             console.log(users);
-            res.render('editDetails', { title: 'My Account', users: users, username: username });
+            res.render('editDetails', { title: 'Edit Account', users: users, username: username });
         })
     })
 });

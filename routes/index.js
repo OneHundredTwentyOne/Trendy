@@ -43,4 +43,9 @@ router.get('/delete', function(req, res, next) {
     res.render('delete', {title: 'Delete Account'});
 });
 
+router.get('/myOrders', function(req, res, next) {
+    username = localStorage.getItem("username");
+    res.render('myOrders', {title: 'My Orders'});
+});
+
 module.exports = router;

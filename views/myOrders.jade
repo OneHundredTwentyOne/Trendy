@@ -55,23 +55,5 @@ block body
                                         tr
                                             td
                                                 a(href='myProducts') My Products
-                h2 &nbsp #{title}                
-                .col-md-9
-                    .row
-                        for item in selling
-                            .col-sm-3.col-lg-3.col-md-3
-                                .thumbnail
-                                    img(id='search-results-image', src='images/#{item.image}.png', alt='Product')
-                                    .caption
-                                        h4.pull-right $#{item.price}
-                                        h4
-                                            a(href="item?itemid=#{item.uid}") #{item.label}
-                                    .ratings
-                                        p.pull-right 15 reviews
-                                        p
-                                            span.glyphicon.glyphicon-star
-                                            span.glyphicon.glyphicon-star
-                                            span.glyphicon.glyphicon-star
-                                            span.glyphicon.glyphicon-star
-                                            span.glyphicon.glyphicon-star
+              
     include footer

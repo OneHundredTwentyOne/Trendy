@@ -14,23 +14,65 @@ block body
             href: "#"
         }, {text: "ABOUT", href: "/about"}, {text: "CONTACT", href: "/contact"}],0)
         hr
-        .title Edit Details
-        br
-        form.well(id='form-login', method='post')
-            .form-group
-                label Change Name
-                input.form-control(type='text', name='name')
-            .form-group
-                label Change Email
-                input.form-control(type='text', id='user-tf', name='email')
-            .form-group
-                label Change Address
-                textarea#comment.form-control(rows='1', name='address')
-            .controls
-                button(type='submit').btn.btn-primary.button-sign-in
-                    span.glyphicon.glyphicon-log-in
-                    | &nbsp Save Changes
-            .clearfix
+        .container.main
+            .row
+                .col-sm-3.col-md-3
+                    #accordion.panel-group
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                                        span.glyphicon.glyphicon-user
+                                        | &nbsp Account
+                            #collapseOne.panel-collapse.collapse.in
+                                .panel-body
+                                    table.table
+                                        tr
+                                            td
+                                                a(href="accountDetails") Account Details
+                                        tr
+                                            td
+                                                a(href='myOrders') My Orders
+                                                span
+                                        tr
+                                            td
+                                                span.glyphicon.glyphicon-trash.text-danger
+                                                a.text-danger(href='delete')
+                                                    | &nbsp Delete Account
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
+                                        span.glyphicon.glyphicon-th
+                                        | &nbsp Sell
+                            #collapseTwo.panel-collapse.collapse
+                                .panel-body
+                                    table.table
+                                        tr
+                                            td
+                                                a(href='myProducts') Sell A Product
+                                                span
+                                        tr
+                                            td
+                                                a(href='myProducts') My Products
+                .container
+                    h2 &nbsp #{title}  
+                    h5 &nbsp &nbsp Fill in all field below in order to add a product to the site to sell.
+                    form.well(id='form-login', method='post')
+                        .form-group
+                            label Change Name
+                            input.form-control(type='text', name='name')
+                        .form-group
+                            label Change Email
+                            input.form-control(type='text', id='user-tf', name='email')
+                        .form-group
+                            label Change Address
+                            input.form-control(type='text', name='address')
+                        .controls
+                            button(type='submit').btn.btn-primary.button-sign-in
+                                span.glyphicon.glyphicon-save
+                                | &nbsp Save Changes
+                   .clearfix
 
         br
     include footer
