@@ -17,6 +17,8 @@ var sell = require('./routes/sell');
 var profile = require('./routes/profile');
 var cart = require('./routes/cart');
 var item = require('./routes/item');
+var myOrders = require('./routes/myOrders');
+var deleteItem = require('./routes/deleteItem');
 var multer = require('multer');
 var app = express();
 
@@ -45,7 +47,8 @@ app.use('/editDetails', editDetails);
 app.use('/myProducts', myProducts);
 app.use('/item', item);
 app.use('/cart',cart);
-
+app.use('/myOrders', myOrders);
+app.use('/deleteItem', deleteItem);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
