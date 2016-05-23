@@ -14,7 +14,7 @@ var size = "";
 
 /*GET item page*/
 router.get("/",function(req,res) {
-	username = localStorage.getItem("username");
+  username = localStorage.getItem("username");
   var id = parseInt(req.query.itemid);
   console.log(id);
   pg.connect(database, function (err, client, done) {
@@ -34,7 +34,7 @@ router.get("/",function(req,res) {
       price= result.rows[0].price;
       size= result.rows[0].size;
       sellername= result.rows[0].sellername;
-    res.render('item', {title: 'Item', items: item});
+    res.render('item', {title: 'Item', items: item, username: username});
   })
   });
 });
@@ -58,7 +58,7 @@ router.post('/', function (req,res,next) {
       }
       else{
         localStorage.setItem("username",username);
-        res.render('item', { title:  'Item', items:item });
+        res.render('item', { title:  'Item', items:item, username: username });
         return;
       }
     })
