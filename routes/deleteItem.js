@@ -13,4 +13,15 @@ router.get('/', function(req, res, next) {
     res.render('deleteItem', {title: 'Delete Account'});
 });
 
+router.post('/', function(req, res) {
+    pg.connect(database, function (err, client, done) {
+    // Query items
+    var query = client.query("DELETE FROM users WHERE username='"+ username + "'", function (err, result) {
+	 username = null;
+    localStorage.clear();
+    res.render('deletedConfirm', { title: 'Account Deleted!' , username: username});
+  })
+});
+})
+
 module.exports = router;

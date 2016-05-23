@@ -7,7 +7,7 @@ var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
 
 
-/*GET login page*/
+/*GET logout page*/
 router.get('/', function(req, res) {
     pg.connect(database, function (err, client, done) {
     // Query items

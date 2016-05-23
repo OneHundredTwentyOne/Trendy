@@ -56,7 +56,11 @@ block body
                                             td
                                                 a(href='myProducts') My Products
                 .container
-                    
+                    h2 &nbsp #{title}
+                    +alert-i-warning("Are you sure you want to delete your account?")
+                    form(id='form-purchase', method='post')
+                        button(type='submit').btn.btn-primary.button-trash
+                          | Delete Account
 
 
 

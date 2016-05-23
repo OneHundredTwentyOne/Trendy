@@ -38,6 +38,11 @@ router.get('/about', function(req, res, next) {
     res.render('about', {title: 'About Us'});
 });
 
+router.get('/deletedConfirm', function(req, res, next) {
+    username = localStorage.getItem("username");
+    res.render('deletedConfirm', {title: 'Deleted'});
+});
+
 router.get('/myOrders', function(req, res, next) {
     username = localStorage.getItem("username");
     res.render('myOrders', {title: 'My Orders'});
