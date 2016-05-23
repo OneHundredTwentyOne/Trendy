@@ -40,7 +40,7 @@ block body
                     .thumbnail
                         img(id='search-results-image', src='images/#{items.image}.png', alt='Product')
                         .caption-full
-                            form.well(id='form-cart', method='post')
+                            form(id='form-cart', method='post')
                                 button(type='submit').btn.btn-primary.button-shopping-cart
                                     | Add To Cart
                             h4

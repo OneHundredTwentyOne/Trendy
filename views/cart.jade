@@ -43,27 +43,41 @@ block body
                         button.btn.btn-danger(type='button')
                           span.glyphicon.glyphicon-remove
                           |  Remove
-        .col-sm-12.col-md-10.col-md-offset-1
+        if(items[0] != null)                  
+            .col-sm-12.col-md-10.col-md-offset-1
 
-          tr
-            td
-            td
-            td
-            td
-              h3 Total
-            td.text-right
-              h3
-                strong $#{totalPrice}
-          tr
-            td
-            td
-            td
-            td
-              button.btn.btn-default(type='button')
-                span.glyphicon.glyphicon-shopping-cart
-                |  Continue Shopping
-            td
-              form.well(id='form-purchase', method='post')
-                button(type='submit').btn.btn-primary.button-shopping-cart
-                  | Purchase
+              tr
+                td
+                td
+                td
+                td
+                  h3 Total
+                td.text-right
+                  h3
+                    strong $#{totalPrice}
+              tr
+                td
+                td
+                td
+                td
+                  button.btn.btn-default(type='button')
+                    span.glyphicon.glyphicon-shopping-cart
+                    |  Continue Shopping
+                td
+                  form(id='form-purchase', method='post')
+                    button(type='submit').btn.btn-primary.button-shopping-cart
+                      | Purchase
+         else
+             .col-sm-12.col-md-10.col-md-offset-1
+                 h2 &nbsp #{title}
+                 +panel-warning("Your Cart is Empty!")  
+                     p Add products to your cart!
+                     +a-btn-primary(type="button", onclick= "home()")
+                          span.glyphicon.glyphicon-shopping-cart
+                          | &nbsp Go Shopping
+                          span &nbsp &nbsp &nbsp
+                     script.
+                         function home() {
+                             window.location.href = '/index'
+                         }                 
     include footer
