@@ -7,4 +7,10 @@ var LocalStorage = require('node-localstorage').LocalStorage,
     localStorage = new LocalStorage('./scratch');
 var totalPrice = 0;
 
+
+router.get('/', function(req, res, next) {
+    username = localStorage.getItem("username");
+    res.render('deleteItem', {title: 'Delete Account'});
+});
+
 module.exports = router;

@@ -7,30 +7,57 @@ head
 block body
     include topnav
     .container
-    +img-responsive ("images/logo.png", "Logo")
+        +img-responsive ("images/logo.png", "Logo")
     .navbar-main
         +nav-pills-justified([{text: "HOME", href: "/"}, {text: "BROWSE", href: "/Browse"}, {
             text: "COMMUNITY",
             href: "#"
         }, {text: "ABOUT", href: "/about"}, {text: "CONTACT", href: "/contact"}],0)
         hr
-        br
-        extends ../node_modules/jade-bootstrap/_bootstrap
-append styles
-    link(rel='stylesheet', href='/stylesheets/style.css')
-head
-    title= title
+        .container.main
+            .row
+                .col-sm-3.col-md-3
+                    #accordion.panel-group
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                                        span.glyphicon.glyphicon-user
+                                        | &nbsp Account
+                            #collapseOne.panel-collapse.collapse.in
+                                .panel-body
+                                    table.table
+                                        tr
+                                            td
+                                                a(href="accountDetails") Account Details
+                                        tr
+                                            td
+                                                a(href='myOrders') My Orders
+                                                span
+                                        tr
+                                            td
+                                                span.glyphicon.glyphicon-trash.text-danger
+                                                a.text-danger(href='delete')
+                                                    | &nbsp Delete Account
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
+                                        span.glyphicon.glyphicon-th
+                                        | &nbsp Sell
+                            #collapseTwo.panel-collapse.collapse
+                                .panel-body
+                                    table.table
+                                        tr
+                                            td
+                                                a(href='sell') Sell A Product
+                                                span
+                                        tr
+                                            td
+                                                a(href='myProducts') My Products
+                .container
+                    
 
-block body
-    include topnav
-    .container
-    +img-responsive ("images/logo.png", "Logo")
-    .navbar-main
-        +nav-pills-justified([{text: "HOME", href: "/"}, {text: "BROWSE", href: "/Browse"}, {
-            text: "COMMUNITY",
-            href: "#"
-        }, {text: "ABOUT", href: "/about"}, {text: "CONTACT", href: "/contact"}],0)
-        hr
-        br
+
 
     include footer
